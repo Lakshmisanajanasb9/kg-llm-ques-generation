@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>KG + LLM Question Generator</title>
+    <style>
+      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial; margin: 40px; max-width: 800px; }
+      input, button { padding: 10px; font-size: 16px; }
+      .row { margin-bottom: 12px; }
+      .card { border: 1px solid #ddd; border-radius: 10px; padding: 16px; margin-top: 20px; }
+      li { margin-bottom: 8px; }
+    </style>
+  </head>
+  <body>
+    <h1>KG + LLM Question Generator</h1>
+    <p>Enter a market topic/event to generate reasoning-driven questions grounded in retrieved facts.</p>
+
+    <form method="POST" action="/generate">
+      <div class="row">
+        <label>Topic:</label><br />
+        <input name="topic" value="{{ topic }}" style="width: 100%;" placeholder="e.g. interest rate hikes and sector impact" />
+      </div>
+
+      <div class="row">
+        <label>Number of questions:</label><br />
+        <input name="n" type="number" value="{{ n }}" min="1" max="10" />
+      </div>
+
+      <button type="submit">Generate</button>
+    </form>
+
+    {% if questions %}
+      <div class="card">
+        <h2>Questions</h2>
+        <ol>
+          {% for q in questions %}
+            <li>{{ q }}</li>
+          {% endfor %}
+        </ol>
+      </div>
+    {% endif %}
+  </body>
+</html>

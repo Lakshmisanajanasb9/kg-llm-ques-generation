@@ -1,0 +1,7 @@
+[
+  {"event":"Oil inventory draw","relation":"AFFECTS","related":"Crude oil price"},
+  {"event":"OPEC production cut","relation":"AFFECTS","related":"Global oil supply"},
+  {"event":"Rising oil demand","relation":"DRIVES","related":"Higher trading volume"},
+  {"event":"Geopolitical disruption","relation":"AFFECTS","related":"Oil price volatility"},
+  {"event":"Refinery outage","relation":"AFFECTS","related":"Fuel spreads"}
+]

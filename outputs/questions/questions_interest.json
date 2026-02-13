@@ -1,0 +1,159 @@
+{
+  "topic": "interest rates",
+  "model": "google/flan-t5-small",
+  "questions": [
+    "How many interest rates does the U.S. Federal Reserve have?"
+  ],
+  "context": [
+    {
+      "event": "Higher interest rates",
+      "relation": "Positive_Impact_On",
+      "related": "Investors",
+      "time": 51
+    },
+    {
+      "event": "Higher interest rates",
+      "relation": "Impact",
+      "related": "Gold Price",
+      "time": 18
+    },
+    {
+      "event": "Higher interest rates",
+      "relation": "Impact",
+      "related": "Gold Price",
+      "time": 4
+    },
+    {
+      "event": "Higher interest rates",
+      "relation": "Positive_Impact_On",
+      "related": "U.S. Dollar",
+      "time": 19
+    },
+    {
+      "event": "Higher interest rates",
+      "relation": "Impact",
+      "related": "U.S. Dollar",
+      "time": 36
+    },
+    {
+      "event": "Higher interest rates",
+      "relation": "Positive_Impact_On",
+      "related": "U.S. Dollar",
+      "time": 0
+    },
+    {
+      "event": "Higher interest rates",
+      "relation": "Impact",
+      "related": "Economic growth",
+      "time": 16
+    },
+    {
+      "event": "Higher interest rates",
+      "relation": "Impact",
+      "related": "Commodities",
+      "time": 45
+    },
+    {
+      "event": "Higher interest rates",
+      "relation": "Impact",
+      "related": "Emerging markets",
+      "time": 36
+    },
+    {
+      "event": "Higher interest rates",
+      "relation": "Negative_Impact_On",
+      "related": "prices",
+      "time": 13
+    },
+    {
+      "event": "Higher interest rates",
+      "relation": "Relate_To",
+      "related": "Profit margins",
+      "time": 17
+    },
+    {
+      "event": "Interest Rates",
+      "relation": "Impact",
+      "related": "United States",
+      "time": 67
+    },
+    {
+      "event": "Interest Rates",
+      "relation": "Relate_To",
+      "related": "U.S. Federal Reserve",
+      "time": 6
+    },
+    {
+      "event": "Interest Rates",
+      "relation": "Impact",
+      "related": "U.S. Federal Reserve",
+      "time": 17
+    },
+    {
+      "event": "Interest Rates",
+      "relation": "Impact",
+      "related": "U.S. Federal Reserve",
+      "time": 20
+    },
+    {
+      "event": "Interest Rates",
+      "relation": "Impact",
+      "related": "U.S. Federal Reserve",
+      "time": 21
+    },
+    {
+      "event": "Interest Rates",
+      "relation": "Impact",
+      "related": "U.S. Federal Reserve",
+      "time": 48
+    },
+    {
+      "event": "Interest Rates",
+      "relation": "Relate_To",
+      "related": "U.S. Federal Reserve",
+      "time": 53
+    },
+    {
+      "event": "Interest Rates",
+      "relation": "Raise",
+      "related": "U.S. Federal Reserve",
+      "time": 74
+    },
+    {
+      "event": "Interest Rates",
+      "relation": "Impact",
+      "related": "U.S. Federal Reserve",
+      "time": 74
+    },
+    {
+      "event": "Interest Rates",
+      "relation": "Positive_Impact_On",
+      "related": "Investors",
+      "time": 38
+    },
+    {
+      "event": "Interest Rates",
+      "relation": "Impact",
+      "related": "Investors",
+      "time": 40
+    },
+    {
+      "event": "Interest Rates",
+      "relation": "Impact",
+      "related": "Investors",
+      "time": 44
+    },
+    {
+      "event": "Interest Rates",
+      "relation": "Impact",
+      "related": "Investors",
+      "time": 50
+    },
+    {
+      "event": "Interest Rates",
+      "relation": "Control",
+      "related": "Investors",
+      "time": 78
+    }
+  ]
+}

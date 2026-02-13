@@ -1,0 +1,16 @@
+rid,rname
+0,Relate_To
+1,Control
+2,Operate_In
+3,Impact
+4,Has
+5,Negative_Impact_On
+6,Raise
+7,Is_Member_Of
+8,Participates_In
+9,Announce
+10,Invests_In
+11,Produce
+12,Introduce
+13,Decrease
+14,Positive_Impact_On

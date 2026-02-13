@@ -1,0 +1,4 @@
+[
+  {"event":"Interest rate hike","relation":"AFFECTS","related":"Technology sector"},
+  {"event":"Interest rate hike","relation":"AFFECTS","related":"Consumer discretionary sector"},
+  {"event":"Inflation rise","relation":"DRIVES","related":"Interest rate hike"}]
