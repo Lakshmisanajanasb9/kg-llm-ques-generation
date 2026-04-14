@@ -1,0 +1,929 @@
+{
+  "results": [
+    {
+      "method": "zero_shot_findkg",
+      "topic": "JPMorgan Chase",
+      "num_paths": 10,
+      "num_questions": 5,
+      "questions": [
+        "1. In what way does a negative impact of JPMorgan Chase on stocks contribute to a decline in corporate earnings?",
+        "2. How does the decrease in shares by General Motors affect JPMorgan Chase and its potential investment strategies, leading to increased volatility or joint ventures?",
+        "3. Through what mechanism do declines in stock prices due to negative impacts from JPMorgan Chase impact global manufacturing slowdowns?",
+        "4. What role does a positive impact of JPMorgan Chase on stocks play in boosting the overall economy?",
+        "5. How does the decrease in various indices such as Dow Jones Industrial Average, Nasdaq Composite, and S&P 500 by JPMorgan Chase's negative impacts reflect upon market sentiment or investor confidence?"
+      ],
+      "paths": [
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Negative_Impact_On",
+          "related": "Corporate Earnings",
+          "time": 93,
+          "time1": 93,
+          "time2": 94,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Negative_Impact_On @ t=94]--> Corporate Earnings"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Negative_Impact_On",
+          "related": "Global Manufacturing Slowdown",
+          "time": 93,
+          "time1": 93,
+          "time2": 91,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Negative_Impact_On @ t=91]--> Global Manufacturing Slowdown"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Positive_Impact_On",
+          "related": "economy",
+          "time": 93,
+          "time1": 93,
+          "time2": 89,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Positive_Impact_On @ t=89]--> economy"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Decrease",
+          "related": "Dow Jones Industrial Average",
+          "time": 93,
+          "time1": 93,
+          "time2": 84,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Decrease @ t=84]--> Dow Jones Industrial Average"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Decrease",
+          "related": "Nasdaq Composite",
+          "time": 93,
+          "time1": 93,
+          "time2": 84,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Decrease @ t=84]--> Nasdaq Composite"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Decrease",
+          "related": "S&P500",
+          "time": 93,
+          "time1": 93,
+          "time2": 84,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Decrease @ t=84]--> S&P500"
+        },
+        {
+          "event": "General Motors",
+          "relation1": "Impact",
+          "middle": "JPMorgan Chase",
+          "relation2": "Decrease",
+          "related": "Shares",
+          "time": 89,
+          "time1": 89,
+          "time2": 83,
+          "split": "train",
+          "context_line": "General Motors --[Impact @ t=89]--> JPMorgan Chase --[Decrease @ t=83]--> Shares"
+        },
+        {
+          "event": "General Motors",
+          "relation1": "Impact",
+          "middle": "JPMorgan Chase",
+          "relation2": "Announce",
+          "related": "Earnings Results",
+          "time": 89,
+          "time1": 89,
+          "time2": 66,
+          "split": "train",
+          "context_line": "General Motors --[Impact @ t=89]--> JPMorgan Chase --[Announce @ t=66]--> Earnings Results"
+        },
+        {
+          "event": "General Motors",
+          "relation1": "Impact",
+          "middle": "JPMorgan Chase",
+          "relation2": "Invests_In",
+          "related": "Volatility",
+          "time": 89,
+          "time1": 89,
+          "time2": 38,
+          "split": "train",
+          "context_line": "General Motors --[Impact @ t=89]--> JPMorgan Chase --[Invests_In @ t=38]--> Volatility"
+        },
+        {
+          "event": "General Motors",
+          "relation1": "Impact",
+          "middle": "JPMorgan Chase",
+          "relation2": "Invests_In",
+          "related": "Joint Venture",
+          "time": 89,
+          "time1": 89,
+          "time2": 19,
+          "split": "train",
+          "context_line": "General Motors --[Impact @ t=89]--> JPMorgan Chase --[Invests_In @ t=19]--> Joint Venture"
+        }
+      ],
+      "grounding_scores": [
+        0.8632561564445496,
+        0.7002381682395935,
+        0.7289611101150513,
+        0.6645829677581787,
+        0.5944696664810181
+      ],
+      "pairwise_similarities": [
+        0.8057880401611328,
+        0.8299804925918579,
+        0.8253285884857178,
+        0.7325901389122009,
+        0.7758244276046753,
+        0.7785147428512573,
+        0.7081230878829956,
+        0.7768869400024414,
+        0.7186704874038696,
+        0.6659208536148071
+      ],
+      "redundant_pairs": [],
+      "judge_result": null,
+      "summary": {
+        "avg_grounding": 0.7103016138076782,
+        "avg_pairwise_similarity": 0.7617627799510955,
+        "redundant_pair_count": 0.0
+      }
+    },
+    {
+      "method": "few_shot_findkg",
+      "topic": "JPMorgan Chase",
+      "num_paths": 10,
+      "num_questions": 5,
+      "questions": [
+        "Q1: How does a decline in General Motors earnings impact the shares of JPMorgan Chase?",
+        "Q2: In what way do investments by General Motors contribute to volatility or joint ventures with JPMorgan Chase?",
+        "Q3: How might declines in stocks, including Dow Jones Industrial Average, Nasdaq Composite, and S&P500, affect the overall economy due to their connection with JPMorgan Chase?",
+        "Q4: Could a global manufacturing slowdown be linked to negative impacts on corporate earnings at JPMorgan Chase?",
+        "Q5: How does the announcement of General Motors' earnings results by JPMorgan Chase influence stock prices or market trends?"
+      ],
+      "paths": [
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Negative_Impact_On",
+          "related": "Corporate Earnings",
+          "time": 93,
+          "time1": 93,
+          "time2": 94,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Negative_Impact_On @ t=94]--> Corporate Earnings"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Negative_Impact_On",
+          "related": "Global Manufacturing Slowdown",
+          "time": 93,
+          "time1": 93,
+          "time2": 91,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Negative_Impact_On @ t=91]--> Global Manufacturing Slowdown"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Positive_Impact_On",
+          "related": "economy",
+          "time": 93,
+          "time1": 93,
+          "time2": 89,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Positive_Impact_On @ t=89]--> economy"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Decrease",
+          "related": "Dow Jones Industrial Average",
+          "time": 93,
+          "time1": 93,
+          "time2": 84,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Decrease @ t=84]--> Dow Jones Industrial Average"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Decrease",
+          "related": "Nasdaq Composite",
+          "time": 93,
+          "time1": 93,
+          "time2": 84,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Decrease @ t=84]--> Nasdaq Composite"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Decrease",
+          "related": "S&P500",
+          "time": 93,
+          "time1": 93,
+          "time2": 84,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Decrease @ t=84]--> S&P500"
+        },
+        {
+          "event": "General Motors",
+          "relation1": "Impact",
+          "middle": "JPMorgan Chase",
+          "relation2": "Decrease",
+          "related": "Shares",
+          "time": 89,
+          "time1": 89,
+          "time2": 83,
+          "split": "train",
+          "context_line": "General Motors --[Impact @ t=89]--> JPMorgan Chase --[Decrease @ t=83]--> Shares"
+        },
+        {
+          "event": "General Motors",
+          "relation1": "Impact",
+          "middle": "JPMorgan Chase",
+          "relation2": "Announce",
+          "related": "Earnings Results",
+          "time": 89,
+          "time1": 89,
+          "time2": 66,
+          "split": "train",
+          "context_line": "General Motors --[Impact @ t=89]--> JPMorgan Chase --[Announce @ t=66]--> Earnings Results"
+        },
+        {
+          "event": "General Motors",
+          "relation1": "Impact",
+          "middle": "JPMorgan Chase",
+          "relation2": "Invests_In",
+          "related": "Volatility",
+          "time": 89,
+          "time1": 89,
+          "time2": 38,
+          "split": "train",
+          "context_line": "General Motors --[Impact @ t=89]--> JPMorgan Chase --[Invests_In @ t=38]--> Volatility"
+        },
+        {
+          "event": "General Motors",
+          "relation1": "Impact",
+          "middle": "JPMorgan Chase",
+          "relation2": "Invests_In",
+          "related": "Joint Venture",
+          "time": 89,
+          "time1": 89,
+          "time2": 19,
+          "split": "train",
+          "context_line": "General Motors --[Impact @ t=89]--> JPMorgan Chase --[Invests_In @ t=19]--> Joint Venture"
+        }
+      ],
+      "grounding_scores": [
+        0.8032017946243286,
+        0.5753294229507446,
+        0.7297494411468506,
+        0.6560810804367065,
+        0.5953665971755981
+      ],
+      "pairwise_similarities": [
+        0.712051510810852,
+        0.7577285170555115,
+        0.8018449544906616,
+        0.8584330081939697,
+        0.5855534076690674,
+        0.6051996350288391,
+        0.6855356693267822,
+        0.696193277835846,
+        0.6812137961387634,
+        0.7240695953369141
+      ],
+      "redundant_pairs": [
+        {
+          "i": 0,
+          "j": 4,
+          "similarity": 0.8584330081939697,
+          "q1": "Q1: How does a decline in General Motors earnings impact the shares of JPMorgan Chase?",
+          "q2": "Q5: How does the announcement of General Motors' earnings results by JPMorgan Chase influence stock prices or market trends?"
+        }
+      ],
+      "judge_result": null,
+      "summary": {
+        "avg_grounding": 0.6719456672668457,
+        "avg_pairwise_similarity": 0.7107823371887207,
+        "redundant_pair_count": 1.0
+      }
+    },
+    {
+      "method": "cot_findkg",
+      "topic": "JPMorgan Chase",
+      "num_paths": 10,
+      "num_questions": 5,
+      "questions": [
+        "1. How did JPMorgan Chase impact corporate earnings during the observed period?",
+        "2. Did JPMorgan Chase have an influence on global manufacturing slowdown over the recorded period?",
+        "3. In what way did stocks respond to positive impacts from JPMorgan Chase in relation to the economy?",
+        "4. Over the observed period, how were Dow Jones Industrial Average and Nasdaq Composite affected by negative impacts from JPMorgans Chase through their related stocks?",
+        "5. How was S&P 500 impacted by decreases in its associated stocks due to actions taken by JPMorgan Chase during the recorded period?"
+      ],
+      "paths": [
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Negative_Impact_On",
+          "related": "Corporate Earnings",
+          "time": 93,
+          "time1": 93,
+          "time2": 94,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Negative_Impact_On @ t=94]--> Corporate Earnings"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Negative_Impact_On",
+          "related": "Global Manufacturing Slowdown",
+          "time": 93,
+          "time1": 93,
+          "time2": 91,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Negative_Impact_On @ t=91]--> Global Manufacturing Slowdown"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Positive_Impact_On",
+          "related": "economy",
+          "time": 93,
+          "time1": 93,
+          "time2": 89,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Positive_Impact_On @ t=89]--> economy"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Decrease",
+          "related": "Dow Jones Industrial Average",
+          "time": 93,
+          "time1": 93,
+          "time2": 84,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Decrease @ t=84]--> Dow Jones Industrial Average"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Decrease",
+          "related": "Nasdaq Composite",
+          "time": 93,
+          "time1": 93,
+          "time2": 84,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Decrease @ t=84]--> Nasdaq Composite"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Decrease",
+          "related": "S&P500",
+          "time": 93,
+          "time1": 93,
+          "time2": 84,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Decrease @ t=84]--> S&P500"
+        },
+        {
+          "event": "General Motors",
+          "relation1": "Impact",
+          "middle": "JPMorgan Chase",
+          "relation2": "Decrease",
+          "related": "Shares",
+          "time": 89,
+          "time1": 89,
+          "time2": 83,
+          "split": "train",
+          "context_line": "General Motors --[Impact @ t=89]--> JPMorgan Chase --[Decrease @ t=83]--> Shares"
+        },
+        {
+          "event": "General Motors",
+          "relation1": "Impact",
+          "middle": "JPMorgan Chase",
+          "relation2": "Announce",
+          "related": "Earnings Results",
+          "time": 89,
+          "time1": 89,
+          "time2": 66,
+          "split": "train",
+          "context_line": "General Motors --[Impact @ t=89]--> JPMorgan Chase --[Announce @ t=66]--> Earnings Results"
+        },
+        {
+          "event": "General Motors",
+          "relation1": "Impact",
+          "middle": "JPMorgan Chase",
+          "relation2": "Invests_In",
+          "related": "Volatility",
+          "time": 89,
+          "time1": 89,
+          "time2": 38,
+          "split": "train",
+          "context_line": "General Motors --[Impact @ t=89]--> JPMorgan Chase --[Invests_In @ t=38]--> Volatility"
+        },
+        {
+          "event": "General Motors",
+          "relation1": "Impact",
+          "middle": "JPMorgan Chase",
+          "relation2": "Invests_In",
+          "related": "Joint Venture",
+          "time": 89,
+          "time1": 89,
+          "time2": 19,
+          "split": "train",
+          "context_line": "General Motors --[Impact @ t=89]--> JPMorgan Chase --[Invests_In @ t=19]--> Joint Venture"
+        }
+      ],
+      "grounding_scores": [
+        0.8331503868103027,
+        0.816150426864624,
+        0.8798408508300781,
+        0.7565000057220459,
+        0.6294640898704529
+      ],
+      "pairwise_similarities": [
+        0.7498812675476074,
+        0.8314001560211182,
+        0.7530381679534912,
+        0.736235499382019,
+        0.7718086242675781,
+        0.6940491199493408,
+        0.684370219707489,
+        0.8001493215560913,
+        0.730018675327301,
+        0.7056292295455933
+      ],
+      "redundant_pairs": [],
+      "judge_result": null,
+      "summary": {
+        "avg_grounding": 0.7830211520195007,
+        "avg_pairwise_similarity": 0.745658028125763,
+        "redundant_pair_count": 0.0
+      }
+    },
+    {
+      "method": "dsp_findkg",
+      "topic": "JPMorgan Chase",
+      "num_paths": 10,
+      "num_questions": 5,
+      "questions": [
+        "1. How did JPMorgan Chase's impact on stocks during Q93 contribute to the negative impact on Corporate Earnings?",
+        "2. In what way did JPMorgan Chase's influence on stocks in Q93 affect Global Manufacturing Slowdown earlier, at Q91?",
+        "3. What was the economic effect of JPMorgan Chase positively influencing stocks from Q93 to Q89 on the overall economy?",
+        "4. How did the decrease in Dow Jones Industrial Average following a negative impact by JPMorgan Chase's actions during Q93 unfold over time compared to Nasdaq Composite and S&P500?",
+        "5. What was the economic significance of General Motors causing shares of JPMorgan Chase to decrease from Q89 to Q83, as observed in our data?"
+      ],
+      "paths": [
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Negative_Impact_On",
+          "related": "Corporate Earnings",
+          "time": 93,
+          "time1": 93,
+          "time2": 94,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Negative_Impact_On @ t=94]--> Corporate Earnings"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Negative_Impact_On",
+          "related": "Global Manufacturing Slowdown",
+          "time": 93,
+          "time1": 93,
+          "time2": 91,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Negative_Impact_On @ t=91]--> Global Manufacturing Slowdown"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Positive_Impact_On",
+          "related": "economy",
+          "time": 93,
+          "time1": 93,
+          "time2": 89,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Positive_Impact_On @ t=89]--> economy"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Decrease",
+          "related": "Dow Jones Industrial Average",
+          "time": 93,
+          "time1": 93,
+          "time2": 84,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Decrease @ t=84]--> Dow Jones Industrial Average"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Decrease",
+          "related": "Nasdaq Composite",
+          "time": 93,
+          "time1": 93,
+          "time2": 84,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Decrease @ t=84]--> Nasdaq Composite"
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "Impact",
+          "middle": "stocks",
+          "relation2": "Decrease",
+          "related": "S&P500",
+          "time": 93,
+          "time1": 93,
+          "time2": 84,
+          "split": "train",
+          "context_line": "JPMorgan Chase --[Impact @ t=93]--> stocks --[Decrease @ t=84]--> S&P500"
+        },
+        {
+          "event": "General Motors",
+          "relation1": "Impact",
+          "middle": "JPMorgan Chase",
+          "relation2": "Decrease",
+          "related": "Shares",
+          "time": 89,
+          "time1": 89,
+          "time2": 83,
+          "split": "train",
+          "context_line": "General Motors --[Impact @ t=89]--> JPMorgan Chase --[Decrease @ t=83]--> Shares"
+        },
+        {
+          "event": "General Motors",
+          "relation1": "Impact",
+          "middle": "JPMorgan Chase",
+          "relation2": "Announce",
+          "related": "Earnings Results",
+          "time": 89,
+          "time1": 89,
+          "time2": 66,
+          "split": "train",
+          "context_line": "General Motors --[Impact @ t=89]--> JPMorgan Chase --[Announce @ t=66]--> Earnings Results"
+        },
+        {
+          "event": "General Motors",
+          "relation1": "Impact",
+          "middle": "JPMorgan Chase",
+          "relation2": "Invests_In",
+          "related": "Volatility",
+          "time": 89,
+          "time1": 89,
+          "time2": 38,
+          "split": "train",
+          "context_line": "General Motors --[Impact @ t=89]--> JPMorgan Chase --[Invests_In @ t=38]--> Volatility"
+        },
+        {
+          "event": "General Motors",
+          "relation1": "Impact",
+          "middle": "JPMorgan Chase",
+          "relation2": "Invests_In",
+          "related": "Joint Venture",
+          "time": 89,
+          "time1": 89,
+          "time2": 19,
+          "split": "train",
+          "context_line": "General Motors --[Impact @ t=89]--> JPMorgan Chase --[Invests_In @ t=19]--> Joint Venture"
+        }
+      ],
+      "grounding_scores": [
+        0.786044716835022,
+        0.7611063718795776,
+        0.7619950175285339,
+        0.6912635564804077,
+        0.5751479268074036
+      ],
+      "pairwise_similarities": [
+        0.8548828959465027,
+        0.8899060487747192,
+        0.765434205532074,
+        0.8214083313941956,
+        0.871045708656311,
+        0.7670353651046753,
+        0.8323202133178711,
+        0.7783892154693604,
+        0.9048303365707397,
+        0.7531237602233887
+      ],
+      "redundant_pairs": [
+        {
+          "i": 0,
+          "j": 1,
+          "similarity": 0.8548828959465027,
+          "q1": "1. How did JPMorgan Chase's impact on stocks during Q93 contribute to the negative impact on Corporate Earnings?",
+          "q2": "2. In what way did JPMorgan Chase's influence on stocks in Q93 affect Global Manufacturing Slowdown earlier, at Q91?"
+        },
+        {
+          "i": 0,
+          "j": 2,
+          "similarity": 0.8899060487747192,
+          "q1": "1. How did JPMorgan Chase's impact on stocks during Q93 contribute to the negative impact on Corporate Earnings?",
+          "q2": "3. What was the economic effect of JPMorgan Chase positively influencing stocks from Q93 to Q89 on the overall economy?"
+        },
+        {
+          "i": 1,
+          "j": 2,
+          "similarity": 0.871045708656311,
+          "q1": "2. In what way did JPMorgan Chase's influence on stocks in Q93 affect Global Manufacturing Slowdown earlier, at Q91?",
+          "q2": "3. What was the economic effect of JPMorgan Chase positively influencing stocks from Q93 to Q89 on the overall economy?"
+        },
+        {
+          "i": 2,
+          "j": 4,
+          "similarity": 0.9048303365707397,
+          "q1": "3. What was the economic effect of JPMorgan Chase positively influencing stocks from Q93 to Q89 on the overall economy?",
+          "q2": "5. What was the economic significance of General Motors causing shares of JPMorgan Chase to decrease from Q89 to Q83, as observed in our data?"
+        }
+      ],
+      "judge_result": null,
+      "summary": {
+        "avg_grounding": 0.715111517906189,
+        "avg_pairwise_similarity": 0.8238376080989838,
+        "redundant_pair_count": 4.0
+      }
+    },
+    {
+      "method": "zero_shot_wikidata",
+      "topic": "JPMorgan Chase",
+      "num_paths": 4,
+      "num_questions": 5,
+      "questions": [
+        "1. How was JPMorgan Chase affected by the 2007\u20132008 financial crisis in the United States?",
+        "2. What role does the Federal Reserve System play as the central bank of JPMorgan Chase's home country, and how might this influence its operations during a significant event like the financial crisis mentioned above?",
+        "3. How did Donald Trump, as head of government, impact the regulatory environment for companies such as JPMorgan Chase in the United States over the observed period?",
+        "4. In what ways does JPMorgan Chase interact with executive bodies within the Federal Government of the United States during normal operations and crisis management situations like the financial crisis mentioned earlier?",
+        "5. How might the actions taken by JPMorgan Chase, being a significant entity within the U.S., have contributed to or been influenced by the overall response of the country's economy towards the 2007\u20132008 financial crisis?"
+      ],
+      "paths": [
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "country",
+          "middle": "United States",
+          "relation2": "central bank",
+          "related": "Federal Reserve System",
+          "time": null,
+          "score": 10.0
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "country",
+          "middle": "United States",
+          "relation2": "executive body",
+          "related": "Federal Government of the United States",
+          "time": null,
+          "score": 6.0
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "country",
+          "middle": "United States",
+          "relation2": "significant event",
+          "related": "2007\u20132008 financial crisis",
+          "time": null,
+          "score": 6.0
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "country",
+          "middle": "United States",
+          "relation2": "head of government",
+          "related": "Donald Trump",
+          "time": null,
+          "score": 4.0
+        }
+      ],
+      "grounding_scores": [
+        0.6120476722717285,
+        0.7076174020767212,
+        0.5810353755950928,
+        0.7133500576019287
+      ],
+      "pairwise_similarities": [
+        0.7199473977088928,
+        0.7466869354248047,
+        0.7962720394134521,
+        0.8999392986297607,
+        0.6239444613456726,
+        0.7831728458404541,
+        0.7413853406906128,
+        0.7422272562980652,
+        0.7265435457229614,
+        0.7844715118408203
+      ],
+      "redundant_pairs": [
+        {
+          "i": 0,
+          "j": 4,
+          "similarity": 0.8999392986297607,
+          "q1": "1. How was JPMorgan Chase affected by the 2007\u20132008 financial crisis in the United States?",
+          "q2": "5. How might the actions taken by JPMorgan Chase, being a significant entity within the U.S., have contributed to or been influenced by the overall response of the country's economy towards the 2007\u20132008 financial crisis?"
+        }
+      ],
+      "judge_result": null,
+      "summary": {
+        "avg_grounding": 0.6535126268863678,
+        "avg_pairwise_similarity": 0.7564590632915497,
+        "redundant_pair_count": 1.0
+      }
+    },
+    {
+      "method": "few_shot_wikidata",
+      "topic": "JPMorgan Chase",
+      "num_paths": 4,
+      "num_questions": 5,
+      "questions": [
+        "Q1: How did the 2007\u20132008 financial crisis impact decision making by the Federal Government of the United States, specifically regarding policies related to JPMorgan Chase?",
+        "Q2: In what way does the central bank's role in regulating the economy influence JPMorgan Chase during times such as the 2007-2008 financial crisis?",
+        "Q3: How did Donald Trump's leadership affect regulatory decisions that impacted JPMorgan Chase within the United States, particularly during his tenure?",
+        "Q4: To what extent does the stability of JPMorgan Chase contribute to maintaining confidence in the overall health of the U.S. banking sector following events like the 2007-2008 financial crisis?",
+        "Q5: How have changes in government policies and regulations, as a result of the 2007\u20132008 financial crisis, impacted JPMorgan Chase's operations within the United States?"
+      ],
+      "paths": [
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "country",
+          "middle": "United States",
+          "relation2": "central bank",
+          "related": "Federal Reserve System",
+          "time": null,
+          "score": 10.0
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "country",
+          "middle": "United States",
+          "relation2": "executive body",
+          "related": "Federal Government of the United States",
+          "time": null,
+          "score": 6.0
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "country",
+          "middle": "United States",
+          "relation2": "significant event",
+          "related": "2007\u20132008 financial crisis",
+          "time": null,
+          "score": 6.0
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "country",
+          "middle": "United States",
+          "relation2": "head of government",
+          "related": "Donald Trump",
+          "time": null,
+          "score": 4.0
+        }
+      ],
+      "grounding_scores": [
+        0.5752070546150208,
+        0.6484053134918213,
+        0.5787326097488403,
+        0.5883957743644714
+      ],
+      "pairwise_similarities": [
+        0.7970520853996277,
+        0.7825078368186951,
+        0.7362130880355835,
+        0.8864284157752991,
+        0.7141412496566772,
+        0.7704029083251953,
+        0.8217044472694397,
+        0.676271915435791,
+        0.7871172428131104,
+        0.7680243253707886
+      ],
+      "redundant_pairs": [
+        {
+          "i": 0,
+          "j": 4,
+          "similarity": 0.8864284157752991,
+          "q1": "Q1: How did the 2007\u20132008 financial crisis impact decision making by the Federal Government of the United States, specifically regarding policies related to JPMorgan Chase?",
+          "q2": "Q5: How have changes in government policies and regulations, as a result of the 2007\u20132008 financial crisis, impacted JPMorgan Chase's operations within the United States?"
+        }
+      ],
+      "judge_result": null,
+      "summary": {
+        "avg_grounding": 0.5976851880550385,
+        "avg_pairwise_similarity": 0.7739863514900207,
+        "redundant_pair_count": 1.0
+      }
+    },
+    {
+      "method": "cot_wikidata",
+      "topic": "JPMorgan Chase",
+      "num_paths": 4,
+      "num_questions": 5,
+      "questions": [
+        "1. How is JPMorgan Chase related to the United States as its country?",
+        "2. What is the connection between JPMorgan Chase and the Federal Reserve System, regarding their role as central banks in the United States?",
+        "3. In what way does JPMorgan Chase participate in the executive body of the Federal Government of the United States?",
+        "4. How did the 2007\u20132008 financial crisis impact JPMorgan Chase within the context of the United States?",
+        "5. During the observed period, how was Donald Trump involved with JPMorgan Chase as head of government in the United States?"
+      ],
+      "paths": [
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "country",
+          "middle": "United States",
+          "relation2": "central bank",
+          "related": "Federal Reserve System",
+          "time": null,
+          "score": 10.0
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "country",
+          "middle": "United States",
+          "relation2": "executive body",
+          "related": "Federal Government of the United States",
+          "time": null,
+          "score": 6.0
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "country",
+          "middle": "United States",
+          "relation2": "significant event",
+          "related": "2007\u20132008 financial crisis",
+          "time": null,
+          "score": 6.0
+        },
+        {
+          "event": "JPMorgan Chase",
+          "relation1": "country",
+          "middle": "United States",
+          "relation2": "head of government",
+          "related": "Donald Trump",
+          "time": null,
+          "score": 4.0
+        }
+      ],
+      "grounding_scores": [
+        0.7107051014900208,
+        0.7323150634765625,
+        0.6148747205734253,
+        0.6434311866760254
+      ],
+      "pairwise_similarities": [
+        0.7660864591598511,
+        0.7820669412612915,
+        0.772385835647583,
+        0.7065732479095459,
+        0.7893151640892029,
+        0.7320342063903809,
+        0.6424117088317871,
+        0.7284008860588074,
+        0.8020878434181213,
+        0.72095787525177
+      ],
+      "redundant_pairs": [],
+      "judge_result": null,
+      "summary": {
+        "avg_grounding": 0.6753315180540085,
+        "avg_pairwise_similarity": 0.7442320168018342,
+        "redundant_pair_count": 0.0
+      }
+    }
+  ]
+}

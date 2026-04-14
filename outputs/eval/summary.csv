@@ -1,0 +1,8 @@
+method,topic,avg_grounding,avg_pairwise_similarity,redundant_pair_count,num_paths,num_questions
+zero_shot_findkg,JPMorgan Chase,0.7103016138076782,0.7617627799510955,0.0,10,5
+few_shot_findkg,JPMorgan Chase,0.6719456672668457,0.7107823371887207,1.0,10,5
+cot_findkg,JPMorgan Chase,0.7830211520195007,0.745658028125763,0.0,10,5
+dsp_findkg,JPMorgan Chase,0.715111517906189,0.8238376080989838,4.0,10,5
+zero_shot_wikidata,JPMorgan Chase,0.6535126268863678,0.7564590632915497,1.0,4,5
+few_shot_wikidata,JPMorgan Chase,0.5976851880550385,0.7739863514900207,1.0,4,5
+cot_wikidata,JPMorgan Chase,0.6753315180540085,0.7442320168018342,0.0,4,5

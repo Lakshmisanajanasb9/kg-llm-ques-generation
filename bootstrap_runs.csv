@@ -1,0 +1,105 @@
+timestamp,method,topic,context,zero_questions,examples_used,final_questions
+2026-04-14T06:45:36.177844,bootstrapped_zero_to_few,JPMorgan Chase,"1. JPMorgan Chase --[Impact @ t=93]--> stocks --[Negative_Impact_On @ t=94]--> Corporate Earnings
+2. JPMorgan Chase --[Impact @ t=93]--> stocks --[Negative_Impact_On @ t=91]--> Global Manufacturing Slowdown
+3. General Motors --[Impact @ t=89]--> JPMorgan Chase --[Decrease @ t=83]--> Shares
+4. General Motors --[Impact @ t=89]--> JPMorgan Chase --[Announce @ t=66]--> Earnings Results
+5. Warren Buffett --[Invests_In @ t=84]--> JPMorgan Chase & Co --[Invests_In @ t=94]--> Fannie and Freddie
+6. Warren Buffett --[Invests_In @ t=84]--> JPMorgan Chase & Co --[Participates_In @ t=88]--> Advisory
+7. JPMorgan Chase --[Decrease @ t=83]--> Shares --[Impact @ t=93]--> Consumer sentiment
+8. JPMorgan Chase --[Decrease @ t=83]--> Shares --[Impact @ t=88]--> Zoom Video Communications Inc.
+9. JPMorgan Chase & Co --[Introduce @ t=82]--> Cloud Computing --[Impact @ t=97]--> Alibaba Group Holding Ltd
+10. JPMorgan Chase & Co --[Negative_Impact_On @ t=80]--> Bank of America Corp. --[Invests_In @ t=94]--> Fannie and Freddie
+11. JPMorgan Chase & Co --[Negative_Impact_On @ t=80]--> Bank of America Corp. --[Decrease @ t=93]--> Profit
+12. JPMorgan Chase --[Impact @ t=74]--> Deutsche Bank AG --[Negative_Impact_On @ t=95]--> Currency Markets
+13. JPMorgan Chase --[Impact @ t=74]--> Deutsche Bank AG --[Decrease @ t=79]--> Costs
+14. JPMorgan Chase & Co --[Impact @ t=73]--> Investor --[Invests_In @ t=75]--> Chewy Inc.
+15. JPMorgan Chase & Co --[Impact @ t=73]--> Investor --[Invests_In @ t=75]--> CrowdStrike Holdings Inc.
+16. JPMorgan Chase & Co --[Participates_In @ t=66]--> NYSE --[Invests_In @ t=26]--> Coinbase
+17. JPMorgan Chase & Co --[Participates_In @ t=66]--> NYSE --[Announce @ t=9]--> Fine
+18. JPMorgan Chase & Co --[Announce @ t=65]--> Department of Labor --[Announce @ t=95]--> Jobs report
+19. JPMorgan Chase & Co --[Announce @ t=65]--> Department of Labor --[Impact @ t=85]--> Job Gains
+20. JPMorgan Chase & Co --[Decrease @ t=63]--> Bank stocks --[Negative_Impact_On @ t=87]--> The U.S. Economy
+21. JPMorgan Chase & Co --[Decrease @ t=63]--> Bank stocks --[Positive_Impact_On @ t=82]--> Interest-rate cuts
+22. JPMorgan Chase & Co --[Announce @ t=55]--> recession --[Impact @ t=87]--> Commodities
+23. JPMorgan Chase & Co --[Announce @ t=55]--> recession --[Impact @ t=79]--> investment
+24. JPMorgan Chase & Co --[Invests_In @ t=52]--> Amazon --[Impact @ t=81]--> Ford Motor Co.
+25. JPMorgan Chase & Co --[Invests_In @ t=52]--> Amazon --[Announce @ t=81]--> Record Profit
+26. JPMorgan Chase --[Impact @ t=51]--> Securities and Exchange Commission --[Announce @ t=96]--> Fines
+27. JPMorgan Chase --[Impact @ t=51]--> Securities and Exchange Commission --[Announce @ t=89]--> Settlement
+28. JPMorgan Chase & Co --[Announce @ t=40]--> earnings --[Impact @ t=95]--> Stock market
+29. JPMorgan Chase & Co --[Announce @ t=40]--> earnings --[Impact @ t=57]--> Stock values
+30. JPMorgan Chase & Co --[Impact @ t=38]--> Mutual funds --[Invests_In @ t=92]--> Fidelity Investments
+31. JPMorgan Chase & Co --[Impact @ t=38]--> Mutual funds --[Invests_In @ t=92]--> Lyft Inc.
+32. JPMorgan Chase --[Invests_In @ t=38]--> Volatility --[Impact @ t=69]--> Exchange-Traded Fund
+33. JPMorgan Chase --[Invests_In @ t=38]--> Volatility --[Impact @ t=54]--> market
+34. JPMorgan Chase & Co --[Participates_In @ t=37]--> Stock market --[Decrease @ t=91]--> Energy companies
+35. JPMorgan Chase --[Impact @ t=37]--> Bond Yield --[Negative_Impact_On @ t=83]--> Stock Market Volatility
+36. JPMorgan Chase & Co --[Participates_In @ t=37]--> Stock market --[Impact @ t=78]--> The U.S. Economy
+37. JPMorgan Chase --[Impact @ t=37]--> Bond Yield --[Negative_Impact_On @ t=76]--> Global Central Banks
+38. JPMorgan Chase & Co --[Invests_In @ t=31]--> BlackRock Inc. --[Impact @ t=98]--> Fannie Mae and Freddie Mac
+39. JPMorgan Chase & Co --[Invests_In @ t=31]--> BlackRock Inc. --[Participates_In @ t=97]--> Debate
+40. JPMorgan Chase & Co --[Impact @ t=26]--> Brexit --[Positive_Impact_On @ t=94]--> Treasury Yield
+41. JPMorgan Chase & Co --[Impact @ t=26]--> Brexit --[Negative_Impact_On @ t=88]--> U.K. Prime Minister Boris Johnson
+42. JPMorgan Chase & Co --[Introduce @ t=25]--> Technology --[Positive_Impact_On @ t=93]--> Business
+43. JPMorgan Chase & Co --[Introduce @ t=25]--> Technology --[Impact @ t=91]--> Freight Transportation
+44. JPMorgan Chase & Co --[Impact @ t=20]--> Banks --[Participates_In @ t=93]--> Repo Operation
+45. JPMorgan Chase & Co --[Impact @ t=20]--> Banks --[Invests_In @ t=93]--> Repurchase Agreements
+46. JPMorgan Chase --[Invests_In @ t=17]--> Technology Sector --[Participates_In @ t=85]--> earnings
+47. JPMorgan Chase --[Invests_In @ t=17]--> Technology Sector --[Impact @ t=62]--> US Stock Market
+48. JPMorgan Chase --[Participates_In @ t=12]--> London --[Participates_In @ t=93]--> Brexit
+49. JPMorgan Chase --[Participates_In @ t=12]--> London --[Impact @ t=79]--> Brexit
+50. JPMorgan Chase & Co --[Impact @ t=3]--> Tax Reforms --[Announce @ t=8]--> Productivity
+51. JPMorgan Chase & Co --[Impact @ t=1]--> Interest Rates --[Negative_Impact_On @ t=68]--> U.S. Dollar
+52. JPMorgan Chase & Co --[Impact @ t=1]--> Interest Rates --[Negative_Impact_On @ t=59]--> Economic growth","What was the negative impact of JPMorgan Chase's stock on corporate earnings in September 2019? || How did the global manufacturing slowdown in November 2019 affect JPMorgan Chase's stocks? || In what way did General Motors' impacts on JPMorgan Chase lead to a decrease in shares in March 2023, and subsequently affected consumer sentiment by September 2024? || How were earnings results announced by General Motors in October 2019 related to the investment of JPMorgan Chase & Co in December 2020? || What was Warren Buffett's involvement with Fannie and Freddie through his investments in both JPMorgan Chase & Co (in August 2023) and advisory participation (in June 2019)? || How did the decrease of shares by JPMorgan Chase in March 2023 impact Zoom Video Communications Inc. by September 2024? || What was the role played by JPMorgan Chase & Co's introduction of cloud computing in July 2018, and its subsequent impact on Al?","What was the role played by JPMorgan Chase & Co's introduction of cloud computing in July 2018, and its subsequent impact on Al? || Through what mechanism does the intermediate entity shape the effect of the first entity on the final entity? || What broader economic or geopolitical consequence could emerge from this two-hop relationship?","How did JPMorgan Chase's impact on corporate earnings in September 2019 influence stocks, and what was the subsequent effect on global manufacturing slowdown? || Through what mechanism does JPMorgan Chase's decrease in shares ownership in March 2008 shape its relationship with General Motors, and how did this affect GM's earnings results later that year? || What broader economic or geopolitical consequences could emerge from the two-hop relationship between Warren Buffett's investments in JPMorgan Chase & Co and Fannie Mae/Freddie Mac through advisory participation? || How did JPMorgan Chase's introduction of cloud computing in February 2018 impact Alibaba Group Holding Ltd, and what was the subsequent effect on AI development or adoption? || What is the relationship between Bank of America Corp.'s negative impact on Fannie Mae/Freddie Mac due to JPMorgan Chase & Co in October 2018 and its effects on their respective profits and investments? || How did JPMorgan Chase's decrease in shares ownership in March 2003 affect?"
+2026-04-14T08:11:56.456289,bootstrapped_zero_to_few,JPMorgan Chase,"1. JPMorgan Chase --[Impact @ t=93]--> stocks --[Negative_Impact_On @ t=94]--> Corporate Earnings
+2. JPMorgan Chase --[Impact @ t=93]--> stocks --[Negative_Impact_On @ t=91]--> Global Manufacturing Slowdown
+3. General Motors --[Impact @ t=89]--> JPMorgan Chase --[Decrease @ t=83]--> Shares
+4. General Motors --[Impact @ t=89]--> JPMorgan Chase --[Announce @ t=66]--> Earnings Results
+5. Warren Buffett --[Invests_In @ t=84]--> JPMorgan Chase & Co --[Invests_In @ t=94]--> Fannie and Freddie
+6. Warren Buffett --[Invests_In @ t=84]--> JPMorgan Chase & Co --[Participates_In @ t=88]--> Advisory
+7. JPMorgan Chase --[Decrease @ t=83]--> Shares --[Impact @ t=93]--> Consumer sentiment
+8. JPMorgan Chase --[Decrease @ t=83]--> Shares --[Impact @ t=88]--> Zoom Video Communications Inc.
+9. JPMorgan Chase & Co --[Introduce @ t=82]--> Cloud Computing --[Impact @ t=97]--> Alibaba Group Holding Ltd
+10. JPMorgan Chase & Co --[Negative_Impact_On @ t=80]--> Bank of America Corp. --[Invests_In @ t=94]--> Fannie and Freddie
+11. JPMorgan Chase & Co --[Negative_Impact_On @ t=80]--> Bank of America Corp. --[Decrease @ t=93]--> Profit
+12. JPMorgan Chase --[Impact @ t=74]--> Deutsche Bank AG --[Negative_Impact_On @ t=95]--> Currency Markets
+13. JPMorgan Chase --[Impact @ t=74]--> Deutsche Bank AG --[Decrease @ t=79]--> Costs
+14. JPMorgan Chase & Co --[Impact @ t=73]--> Investor --[Invests_In @ t=75]--> Chewy Inc.
+15. JPMorgan Chase & Co --[Impact @ t=73]--> Investor --[Invests_In @ t=75]--> CrowdStrike Holdings Inc.
+16. JPMorgan Chase & Co --[Participates_In @ t=66]--> NYSE --[Invests_In @ t=26]--> Coinbase
+17. JPMorgan Chase & Co --[Participates_In @ t=66]--> NYSE --[Announce @ t=9]--> Fine
+18. JPMorgan Chase & Co --[Announce @ t=65]--> Department of Labor --[Announce @ t=95]--> Jobs report
+19. JPMorgan Chase & Co --[Announce @ t=65]--> Department of Labor --[Impact @ t=85]--> Job Gains
+20. JPMorgan Chase & Co --[Decrease @ t=63]--> Bank stocks --[Negative_Impact_On @ t=87]--> The U.S. Economy
+21. JPMorgan Chase & Co --[Decrease @ t=63]--> Bank stocks --[Positive_Impact_On @ t=82]--> Interest-rate cuts
+22. JPMorgan Chase & Co --[Announce @ t=55]--> recession --[Impact @ t=87]--> Commodities
+23. JPMorgan Chase & Co --[Announce @ t=55]--> recession --[Impact @ t=79]--> investment
+24. JPMorgan Chase & Co --[Invests_In @ t=52]--> Amazon --[Impact @ t=81]--> Ford Motor Co.
+25. JPMorgan Chase & Co --[Invests_In @ t=52]--> Amazon --[Announce @ t=81]--> Record Profit
+26. JPMorgan Chase --[Impact @ t=51]--> Securities and Exchange Commission --[Announce @ t=96]--> Fines
+27. JPMorgan Chase --[Impact @ t=51]--> Securities and Exchange Commission --[Announce @ t=89]--> Settlement
+28. JPMorgan Chase & Co --[Announce @ t=40]--> earnings --[Impact @ t=95]--> Stock market
+29. JPMorgan Chase & Co --[Announce @ t=40]--> earnings --[Impact @ t=57]--> Stock values
+30. JPMorgan Chase & Co --[Impact @ t=38]--> Mutual funds --[Invests_In @ t=92]--> Fidelity Investments
+31. JPMorgan Chase & Co --[Impact @ t=38]--> Mutual funds --[Invests_In @ t=92]--> Lyft Inc.
+32. JPMorgan Chase --[Invests_In @ t=38]--> Volatility --[Impact @ t=69]--> Exchange-Traded Fund
+33. JPMorgan Chase --[Invests_In @ t=38]--> Volatility --[Impact @ t=54]--> market
+34. JPMorgan Chase & Co --[Participates_In @ t=37]--> Stock market --[Decrease @ t=91]--> Energy companies
+35. JPMorgan Chase --[Impact @ t=37]--> Bond Yield --[Negative_Impact_On @ t=83]--> Stock Market Volatility
+36. JPMorgan Chase & Co --[Participates_In @ t=37]--> Stock market --[Impact @ t=78]--> The U.S. Economy
+37. JPMorgan Chase --[Impact @ t=37]--> Bond Yield --[Negative_Impact_On @ t=76]--> Global Central Banks
+38. JPMorgan Chase & Co --[Invests_In @ t=31]--> BlackRock Inc. --[Impact @ t=98]--> Fannie Mae and Freddie Mac
+39. JPMorgan Chase & Co --[Invests_In @ t=31]--> BlackRock Inc. --[Participates_In @ t=97]--> Debate
+40. JPMorgan Chase & Co --[Impact @ t=26]--> Brexit --[Positive_Impact_On @ t=94]--> Treasury Yield
+41. JPMorgan Chase & Co --[Impact @ t=26]--> Brexit --[Negative_Impact_On @ t=88]--> U.K. Prime Minister Boris Johnson
+42. JPMorgan Chase & Co --[Introduce @ t=25]--> Technology --[Positive_Impact_On @ t=93]--> Business
+43. JPMorgan Chase & Co --[Introduce @ t=25]--> Technology --[Impact @ t=91]--> Freight Transportation
+44. JPMorgan Chase & Co --[Impact @ t=20]--> Banks --[Participates_In @ t=93]--> Repo Operation
+45. JPMorgan Chase & Co --[Impact @ t=20]--> Banks --[Invests_In @ t=93]--> Repurchase Agreements
+46. JPMorgan Chase --[Invests_In @ t=17]--> Technology Sector --[Participates_In @ t=85]--> earnings
+47. JPMorgan Chase --[Invests_In @ t=17]--> Technology Sector --[Impact @ t=62]--> US Stock Market
+48. JPMorgan Chase --[Participates_In @ t=12]--> London --[Participates_In @ t=93]--> Brexit
+49. JPMorgan Chase --[Participates_In @ t=12]--> London --[Impact @ t=79]--> Brexit
+50. JPMorgan Chase & Co --[Impact @ t=3]--> Tax Reforms --[Announce @ t=8]--> Productivity
+51. JPMorgan Chase & Co --[Impact @ t=1]--> Interest Rates --[Negative_Impact_On @ t=68]--> U.S. Dollar
+52. JPMorgan Chase & Co --[Impact @ t=1]--> Interest Rates --[Negative_Impact_On @ t=59]--> Economic growth","How has the negative impact of JPMorgan Chase's stocks on corporate earnings at t=93 affected global manufacturing slowdown? || What was the result of General Motors' impact on JPMorgan Chase's shares in 2016, and how did this affect their share prices by 2018? || In what ways has Warren Buffett's investments in Fannie and Freddie been influenced by his previous investments in JPMorgan Chase & Co at t=84 and t=94 respectively? || How have JPMorgan Chase's shares impacted consumer sentiment, as well as the stock of Zoom Video Communications Inc., following their decrease in 2013? || In what ways has JPMorgan Chase & Co's introduction of cloud computing at t=82 affected Alibaba Group Holding Ltd by 2019? || What was the impact on Bank of America Corp.'s investments in Fannie and Freddie due to the negative influence from JPMorgan Chase & Co at t=80, and what were its consequences for their profits by 2014?","What was the result of General Motors' impact on JPMorgan Chase's shares in 2016, and how did this affect their share prices by 2018? || Through what mechanism does the intermediate entity shape the effect of the first entity on the final entity? || What broader economic or geopolitical consequence could emerge from this two-hop relationship?","What was the impact of JPMorgan Chase's shares on Corporate Earnings in 2019, and how did this affect them by 2023? || Through what mechanism does a negative impact on Global Manufacturing Slowdown at JPMorgan Chase in 2017 shape its effect on the final entity? || What broader economic or geopolitical consequence could emerge from the two-hop relationship between General Motors and Consumer sentiment via JPMorgan Chase's shares? || How did Warren Buffett's investment in Fannie and Freddie through JPMorgan Chase & Co impact their earnings results announced in 2017? || What was the effect of JPMorgan Chase & Co participating in advisory on its own shares by 2018, and how did this influence consumer sentiment? || How has Zoom Video Communications Inc.'s relationship with JPMorgan Chase been affected through their shared impact on stock prices from 2017 to 2019? || What was the result of Alibaba Group Holding Ltd's cloud computing introduction in relation to JPMorgan Chase & Co,?"
