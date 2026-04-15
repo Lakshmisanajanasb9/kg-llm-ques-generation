@@ -144,6 +144,15 @@
           <input name="n" type="number" value="{{ n }}" min="1" max="10" />
         </div>
 
+        <div class="row">
+          <label>Select relations (optional)</label>
+          <select name="relations" multiple style="width:100%; padding:10px; border-radius:8px;">
+            {% for r in relations %}
+            <option value="{{ r }}">{{ r }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
         <button type="submit">Generate Questions</button>
       </form>
     </div>

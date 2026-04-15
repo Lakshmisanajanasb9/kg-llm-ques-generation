@@ -6,7 +6,9 @@ from src.rag.prompt.judgePrompt import build_judge_prompt
 import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-from src.rag.prompt_template import build_prompt
+#from src.rag.prompt_template import build_prompt
+from src.rag.prompt.chain_prompt import build_cot_prompt as build_prompt
+#from src.rag.prompt.zero_shot import build_zero_prompt as build_prompt
 import requests
 from collections import defaultdict
 
@@ -14,6 +16,7 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 from sklearn.cluster import AgglomerativeClustering
+import re
 
 EMBED_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 embed_model = SentenceTransformer(EMBED_MODEL_NAME)
@@ -331,7 +334,6 @@ def clean_questions(questions):
     seen = set()
 
     banned_terms = [
-        "belarus", "military",
         "template", "wikimedia", "category", "portal"
     ]
 
@@ -355,6 +357,50 @@ def clean_questions(questions):
         cleaned.append(q)
 
     return cleaned
+'''
+
+def clean_questions(questions):
+    cleaned = []
+    seen = set()
+
+    banned_terms = [
+        "belarus", "military",
+        "template", "wikimedia", "category", "portal"
+    ]
+
+    for q in questions:
+        if not q:
+            continue
+
+        q = q.strip()
+
+        #   REMOVE quotes
+        q = re.sub(r'^["\']+|["\']+$', '', q)
+
+        #  FIX multiple question marks
+        q = re.sub(r'\?+$', '?', q)
+
+        #   ensure it ends with exactly one ?
+        if not q.endswith("?"):
+            q += "?"
+
+        #   length filter
+        if len(q) < 30:
+            continue
+
+        q_lower = q.lower()
+
+        if any(term in q_lower for term in banned_terms):
+            continue
+
+        if q_lower in seen:
+            continue
+
+        seen.add(q_lower)
+        cleaned.append(q)
+
+    return cleaned
+'''
 
 
 VALID_RELATIONS = {
@@ -450,6 +496,7 @@ def generate_questions(prompt: str, max_new_tokens: int = 256) -> list[str]:
         line = line.strip()
         if line.lower().startswith("q:"):
             q = line[2:].strip()
+            q = q.strip().strip('"').strip("'")
             if not q.endswith("?"):
                 q += "?"
             lines.append(q)
@@ -458,6 +505,7 @@ def generate_questions(prompt: str, max_new_tokens: int = 256) -> list[str]:
     if len(lines) == 0:
         raw = [ln.strip().lstrip("-").strip() for ln in text.splitlines() if ln.strip()]
         for ln in raw:
+            ln = ln.strip().strip('"').strip("'")
             if not ln.endswith("?"):
                 ln += "?"
             lines.append(ln)
@@ -465,7 +513,7 @@ def generate_questions(prompt: str, max_new_tokens: int = 256) -> list[str]:
     return lines
 
 
-def generate_one_per_path(topic, rows, n):
+'''def generate_one_per_path(topic, rows, n):
     collected = []
     seen = set()
 
@@ -482,9 +530,123 @@ def generate_one_per_path(topic, rows, n):
         if len(collected) >= n:
             break
 
+    return collected[:n]'''
+
+def generate_one_per_path(topic, rows, n):
+    collected = []
+    seen = set()
+
+    starters = [
+        "How does",
+        "Why does",
+        "Through what mechanism does",
+        "What effect does",
+        "To what extent does",
+        "What role does",
+    ]
+
+    weak_relations = {
+        "owned by", "owner of", "part of", "follows", "followed by",
+        "child organization or unit", "country", "country of citizenship",
+        "stock exchange", "member of", "official religion", "studied by",
+        "has part(s)"
+    }
+
+    for i, path in enumerate(rows):
+        starter = starters[i % len(starters)]
+
+        relation1 = str(path.get("relation1") or "").strip().lower()
+        relation2 = str(path.get("relation2") or "").strip().lower()
+
+        prompt = build_prompt(topic, [path], n=1)
+
+        prompt += f"\n\nStart the question with: '{starter}'."
+
+        if relation1 in weak_relations or relation2 in weak_relations:
+            prompt += """
+STRICT CONSTRAINT:
+- This is a STRUCTURAL relationship.
+- Do NOT use words like: influence, impact, affect, cause, lead to, effect.
+- Do NOT introduce decision-making, policies, market volatility, or outcomes unless explicitly stated in the path.
+- Only describe connections, relationships, classifications, ownership links, memberships, geographic links, or institutional links.
+- If a valid structural question cannot be formed, skip this path.
+"""
+        else:
+            prompt += """
+STRICT CONSTRAINT:
+- This path may support an analytical or mechanism-based question.
+- Keep the question grounded in the exact path.
+- Do NOT introduce entities or effects not present in the path.
+"""
+
+        qs = clean_questions(generate_questions(prompt))
+
+        for q in qs:
+            q_norm = q.strip().lower()
+            if q_norm not in seen:
+                seen.add(q_norm)
+                collected.append(q.strip())
+
+        if len(collected) >= n:
+            break
+
     return collected[:n]
 
+'''
+def generate_one_per_path(topic, rows, n):
+    collected = []
+    seen = set()
 
+    starters = [
+        "How does",
+        "Why does",
+        "Through what mechanism does",
+        "What effect does",
+        "To what extent does",
+        "What role does",
+    ]
+
+    weak_relations = {
+        "owned by", "owner of", "part of", "follows", "followed by",
+        "child organization or unit", "country", "country of citizenship"
+    }
+
+    for i, path in enumerate(rows):
+        starter = starters[i % len(starters)]
+
+        relation1 = str(path.get("relation1") or "").strip().lower()
+        relation2 = str(path.get("relation2") or "").strip().lower()
+
+        prompt = build_prompt(topic, [path], n=1)
+
+        prompt += f"\n\nStart the question with: '{starter}'."
+
+        if relation1 in weak_relations or relation2 in weak_relations:
+            prompt += """
+Do NOT turn this into a strong causal claim.
+Frame the question as structural, relational, or descriptive.
+Do not assume influence, control, or decision-making unless explicitly stated in the path.
+"""
+        else:
+            prompt += """
+Prefer an analytical or mechanism-based question.
+Keep the question grounded in the exact path.
+"""
+
+        qs = clean_questions(generate_questions(prompt))
+
+        for q in qs:
+            q_norm = q.strip().lower()
+            if q_norm not in seen:
+                seen.add(q_norm)
+                collected.append(q.strip())
+
+        if len(collected) >= n:
+            break
+
+    return collected[:n]
+
+'''
 
 def simplify_context(rows):
     simplified = []

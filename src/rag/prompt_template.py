@@ -1,282 +1,282 @@
-def build_prompt(event_keyword: str, context_rows: list[dict], n: int = 5) -> str:
-
+def build_prompt(event_keyword: str, context_rows: list[dict], n: int = 1) -> str:
     facts = "\n".join(
-        [
-            f"- {row['event']} --{row['relation1']}--> {row['middle']} "
-            f"--{row['relation2']}--> {row['related']}"
-            for row in context_rows
-        ]
+        f"- {row['event']} --{row['relation1']}--> {row['middle']} --{row['relation2']}--> {row['related']}"
+        for row in context_rows
     )
 
     return f"""
-You are a financial reasoning assistant generating analytical, multi-hop questions from a knowledge graph.
+You are a financial and geopolitical reasoning assistant.
 
-You behave like a financial analyst who:
-- identifies causal chains
-- interprets relationships
-- avoids weak or meaningless reasoning
+You are given EXACTLY ONE knowledge graph path about the topic: {event_keyword}.
 
---------------------------------
-CORE TASK
-You are given structured paths of the form:
+The path has this form:
 
 Event --relation1--> Middle --relation2--> Related
 
-Your job is to:
-1. Interpret the meaning of each path
-2. Convert it into a meaningful real-world mechanism
-3. Generate a high-quality analytical question
+Your task is to generate up to {n} high-quality question(s) based ONLY on this single path.
 
---------------------------------
+--------------------------------------------------
+CORE OBJECTIVE
+--------------------------------------------------
+
+You must interpret the path correctly and then generate a question that matches the type of relationship in the path.
+
+There are TWO main path types:
+
+1. CAUSAL / ANALYTICAL PATHS
+These involve relations like:
+- impact
+- affect
+- influence
+- increase
+- decrease
+- positive_impact_on
+- negative_impact_on
+- cause
+- lead to
+- result in
+
+For these, ask an analytical question about mechanism, effect, consequence, or transmission.
+
+2. STRUCTURAL / RELATIONAL PATHS
+These involve relations like:
+- owned by
+- owner of
+- part of
+- has part(s)
+- follows
+- followed by
+- child organization or unit
+- country
+- country of citizenship
+- stock exchange
+- member of
+- official religion
+- applies to jurisdiction
+- headquarters location
+- central bank
+- executive body
+- legislative body
+
+For these, ask a structural or relational question.
+Do NOT turn them into strong causal claims.
+
+--------------------------------------------------
 STRICT RULES
+--------------------------------------------------
 
-- Use ONLY entity names from the Facts
-- Each question MUST be based on ONE full 2-hop path
-- Each question MUST include Event, Middle, and Related
-- Do NOT generate single-hop questions
-- Do not output sentence fragments, partial questions, notes, or unfinished thoughts.
-- Do NOT invent entities
-- Do NOT combine information from multiple paths
-- If a question contains any entity not present in the path, DO NOT generate it
-- Do NOT answer the question
-- Output ONLY questions
-- Generate up to {n} questions (fewer is OK if some paths are weak)
-- Do not include notes, explanations, or commentary after the question
-- Skip weak or repetitive chains instead of rephrasing them
-- Avoid vague terms like "economic data" — use specific concepts (e.g., inflation, oil prices, stock markets)
-- Each question must be phrased differently
-- Each generated question must be a complete and grammatically correct sentence that clearly expresses a full idea and ends with a question mark; any question that is incomplete, cut off, repetitive, or lacks clarity should be discarded.
---------------------------------
-REASONING STEP (VERY IMPORTANT)
+- Use ONLY the exact entity names in the path.
+- Use Event, Middle, and Related from the SAME path.
+- Do NOT invent new entities, events, institutions, causes, or effects.
+- Do NOT combine multiple paths.
+- Do NOT answer the question.
+- Do NOT output explanations, bullets, notes, labels, or commentary.
+- Do NOT use quotation marks.
+- Output only complete question sentences.
+- Every output must end with exactly one question mark.
+- If the path is weak, unclear, semantically broken, or unrealistic, output NOTHING.
+- Prefer no question over a bad question.
 
-Before writing each question:
-- Interpret the path as a real-world relationship
-- Identify the mechanism linking Event → Related through Middle
-- Use that interpretation to form the question
-- Do NOT just rewrite the path
+CRITICAL:
+The question MUST explicitly reflect BOTH:
+- Event → Middle
+- Middle → Related
 
---------------------------------
-VALIDITY FILTER (CRITICAL)
+If the second relation is missing in the question → DO NOT generate it.
 
-- If a path is unclear, unrealistic, or semantically weak → SKIP it
-- If the relationship does not make real-world sense → SKIP it
-- Prefer fewer strong questions over many weak ones
+Do NOT reverse the direction of the path.
+The causal or structural flow must follow:
 
---------------------------------
-STYLE REQUIREMENTS
+Event → Middle → Related
 
-- Use varied phrasing:
-  - "How does..."
-  - "In what way does..."
-  - "What role does..."
-  - "Through what mechanism..."
-- Avoid repeating the same structure
-- Questions must sound natural and analytical (like economics exam questions)
+Do not make Middle the cause of Event.
+Do not make Related the cause of Event.
 
---------------------------------
-DIVERSITY RULES
+--------------------------------------------------
+VERY IMPORTANT INTERPRETATION RULE
+--------------------------------------------------
 
-- Each question must use a DIFFERENT path
-- Avoid rewording the same relationship
-- Avoid repeating the same middle entity where possible
+Do NOT blindly convert the path into a causal story.
 
---------------------------------
-FEW-SHOT EXAMPLES
+If the path is STRUCTURAL, your question must remain structural.
 
-Facts:
-- Interest Rate Cuts --Impact--> Inflation --Affect--> Gold Price
-- US Federal Reserve --Set--> Interest Rates --Affect--> Borrowing Costs
+That means:
+- ask how two entities are connected
+- ask what relationship exists
+- ask how one entity is linked to another through the middle entity
+- ask about institutional, ownership, geographic, membership, or classification relationships
 
+Do NOT use causal language for structural paths.
+
+Avoid words like:
+- cause
+- influence
+- impact
+- affect
+- lead to
+- result in
+- effect
+- decision-making
+- market volatility
+- policy outcome
+
+unless the path itself clearly supports causality.
+
+--------------------------------------------------
+QUESTION STYLE GUIDANCE
+--------------------------------------------------
+
+For CAUSAL paths, acceptable styles include:
+- How does...
+- In what way does...
+- Through what mechanism does...
+- What effect does...
+- To what extent does...
+- What role does...
+
+For STRUCTURAL paths, acceptable styles include:
+- How is X related to Y through Z?
+- What is the relationship between X and Y through Z?
+- In what way is X connected to Y through Z?
+- How is X structurally linked to Y through Z?
+- What is the nature of the connection between X and Y through Z?
+- How is X associated with Y via Z?
+
+For STRUCTURAL paths, prefer:
+- related to
+- connected to
+- linked to
+- associated with
+- structurally related to
+- part of
+- ownership relationship
+- institutional relationship
+- geographic relationship
+
+--------------------------------------------------
+GOOD STRUCTURAL EXAMPLES
+--------------------------------------------------
+
+Path:
+JPMorgan Chase --owned by--> BlackRock --owned by--> Kuwait Investment Authority
+GOOD:
+Q: How is JPMorgan Chase structurally related to Kuwait Investment Authority through BlackRock?
+
+Path:
+JPMorgan Chase --owned by--> The Vanguard Group --owner of--> Mitsubishi UFJ Financial Group
+GOOD:
+Q: In what way is JPMorgan Chase connected to Mitsubishi UFJ Financial Group through The Vanguard Group?
+
+Path:
+JPMorgan Chase --part of--> Dow Jones Industrial Average --stock exchange--> New York Stock Exchange
+GOOD:
+Q: How is JPMorgan Chase linked to the New York Stock Exchange through its inclusion in the Dow Jones Industrial Average?
+
+Path:
+Trump administration family separation policy --part of--> immigration policy of the first Donald Trump administration --has part(s)--> Executive Order 13769
+GOOD:
+Q: How is the Trump administration family separation policy related to Executive Order 13769 through the immigration policy of the first Donald Trump administration?
+
+Path:
+Iran --member of--> United Nations --has part(s)--> United Nations Economic and Social Council
+GOOD:
+Q: How is Iran connected to the United Nations Economic and Social Council through its membership in the United Nations?
+
+Path:
+Iran --official religion--> Islam --has part(s)--> Shahada
+GOOD:
+Q: How is the Shahada related to Islam, the official religion of Iran?
+
+Path:
+BlackRock --stock exchange--> New York Stock Exchange --significant event--> Black Monday
+GOOD:
+Q: How is BlackRock connected to Black Monday through the New York Stock Exchange?
+
+Path:
+JPMorgan Chase --country--> United States --central bank--> Federal Reserve System
+GOOD:
+Q: How is JPMorgan Chase connected to the Federal Reserve System through its association with the United States?
+
+--------------------------------------------------
+BAD STRUCTURAL EXAMPLES
+--------------------------------------------------
+
+BAD:
+Q: How does BlackRock's ownership cause Kuwait Investment Authority to influence JPMorgan Chase?
+Why bad: invents causality from ownership.
+
+BAD:
+Q: Through what mechanism does Iran's membership in the United Nations influence its decision-making power in ECOSOC?
+Why bad: invents causal influence from membership.
+
+BAD:
+Q: What effect does Islam have on recitation of Shahada?
+Why bad: turns a structural religious relation into causal impact.
+
+BAD:
+Q: Why does JPMorgan Chase's country affiliation with the United States affect lending practices through the Federal Reserve System?
+Why bad: adds economic mechanism not present in the path.
+
+--------------------------------------------------
+GOOD CAUSAL EXAMPLES
+--------------------------------------------------
+
+Path:
+Interest Rate Cuts --impact--> Inflation --affect--> Gold Price
 GOOD:
 Q: How do interest rate cuts influence gold prices through their impact on inflation?
+
+Path:
+Germany --impact--> Inflation --positive_impact_on--> Consumer Spending
+GOOD:
+Q: How does Germany's influence on inflation contribute to consumer spending?
+
+Path:
+US Federal Reserve --set--> Interest Rates --affect--> Borrowing Costs
+GOOD:
 Q: How does the US Federal Reserve affect borrowing costs through its control of interest rates?
-Q: How does a decrease involving shareholders affect economic growth through the Shanghai Composite Index?
+
+Path:
+Inflation --positive_impact_on--> Consumer Spending --impact--> The U.S. Economy
+GOOD:
+Q: In what way does inflation affect the U.S. economy through its positive impact on consumer spending?
+
+--------------------------------------------------
+BAD CAUSAL EXAMPLES
+--------------------------------------------------
 
 BAD:
 Q: What is inflation?
+Why bad: definition question, not multi-hop.
+
+BAD:
 Q: How do interest rate cuts affect inflation?
-Q: Interest Rate Cuts --Impact--> Inflation?
+Why bad: single-hop only.
+
+BAD:
 Q: How does inflation affect markets and consumer sentiment?
+Why bad: introduces entities not in the path.
 
---------------------------------
+BAD:
+Q: Interest Rate Cuts --impact--> Inflation?
+Why bad: not a natural-language analytical question.
+
+--------------------------------------------------
+FINAL INSTRUCTION
+--------------------------------------------------
+
+Now read the single path below and decide whether it is:
+- CAUSAL / ANALYTICAL
+or
+- STRUCTURAL / RELATIONAL
+
+Then generate up to {n} question(s) in the correct style.
 
 Topic: {event_keyword}
 
-Facts:
+Path:
 {facts}
 
 Output:
 Q:
-"""
-
-
-
-
-
-'''
-
-
-def build_prompt(event_keyword: str, context_rows: list[dict], n: int = 5) -> str:
-
-    facts = "\n".join(
-        [
-            f"- {row['event']} --{row['relation1']}--> {row['middle']} "
-            f"--{row['relation2']}--> {row['related']}"
-            for row in context_rows
-        ]
-    )
-
-    return f"""
-You are a financial reasoning assistant that generates analytical questions
-based strictly on relationships in a knowledge graph.
-
-You are a financial analyst generating precise, multi-hop reasoning questions from a structured economic knowledge graph.
-
-You prioritise:
-- clear causal reasoning
-- economic relevance
-- concise phrasing
-
-You avoid:
-- vague language
-- repetition
-- non-economic entities
-
-Before writing the question:
-- Interpret what the path implies (cause, influence, transmission)
-- Convert the path into a meaningful real-world mechanism
-- Then generate the question
-
-STRICT RULES:
-- Use ONLY the exact entity names appearing in Facts.
-- Each question MUST use one complete path from the Facts.
-- Each question MUST be based on at least one full 2-hop chain:
-  Event --relation1--> Middle --relation2--> Related
-- Each question MUST include the Event, Middle, and Related entities from the same chain.
-- Do NOT generate single-hop questions.
-- Do NOT skip the middle entity.
-- Each question must be based on a DIFFERENT path in the Facts.
-- Do NOT reuse the same Event--Middle--Related chain across several questions.
-- If possible, do NOT reuse the same middle entity across questions.
-- Questions should reflect the relationships in the Facts exactly.
-- Do NOT invent entities.
-- Do NOT answer the question.
-- Do NOT output multiple choice.
-- Do NOT ask definition questions.
-- Output exactly {n} questions.
-- Each line must start with "Q:".
-
-
-DIVERSITY RULES:
-- Each question must involve a different middle or related entity
-- Do NOT generate reworded duplicates
-- Each question must be meaningfully different
-- Avoid duplicate triples or paths 
-
-REASONING STEP (VERY IMPORTANT):
-Before generating the question:
-- Interpret the path as a real-world relationship
-- Identify the mechanism linking Event → Related through Middle
-- Use that interpretation to form a meaningful question
-- Do NOT just restate the path directly
-
-STYLE VARIATION:
-- Use varied phrasing (not always "How does X affect Y through Z?")
-- Use forms like:
-  - "In what way does..."
-  - "What role does..."
-  - "How might..."
-  - "Through what mechanism..."
-
-NOISE HANDLING:
-- If a path is weak, unclear, or not economically meaningful,
-  try to interpret it in the most reasonable way possible
-- If interpretation is not possible, skip that path
-
---------------------------------
-EXAMPLES (Few-Shot)
-Facts Example:
-- Interest Rate Cuts --Impact--> Inflation --Affect--> Gold Price
-- AI Regulation --Impact--> Tech Industry --Affect--> Innovation
-- Ukraine War --Disrupt--> Energy Supply --Increase--> Oil Prices
-- US Federal Reserve --Set--> Interest Rates --Affect--> Borrowing Costs
-- Inflation --Reduce--> Purchasing Power --Affect--> Consumer Spending
-- Climate Change Policies --Influence--> Energy Sector --Affect--> Renewable Investment
-- China Economy Slowdown --Impact--> Global Trade --Affect--> Exports
-- Currency Depreciation --Increase--> Export Competitiveness --Boost--> Exports
-- Government Spending --Stimulate--> Economy --Affect--> Employment
-- Oil Prices --Influence--> Inflation --Affect--> Consumer Spending
-
-GOOD Questions:
-Q: How do interest rate cuts influence gold prices through their impact on inflation?
-Q: How does AI regulation affect innovation through its impact on the tech industry?
-Q: How does the Ukraine war influence oil prices through its disruption of energy supply?
-Q: How does the US Federal Reserve affect borrowing costs through its control of interest rates?
-Q: How does inflation affect consumer spending through its impact on purchasing power?
-Q: How do climate change policies influence renewable investment through their impact on the energy sector?
-Q: How does a slowdown in the China economy affect exports through its impact on global trade?
-Q: How does currency depreciation boost exports through increased export competitiveness?
-Q: How does government spending affect employment through its impact on the economy?
-Q: How do oil prices affect consumer spending through their influence on inflation?
-
-BAD Questions (Do NOT generate these):
-# Definition / trivial
-Q: What is inflation?
-Q: What is the Ukraine war?
-Q: What is AI regulation?
-
-# Not multi-hop (only 1 relationship)
-Q: How do interest rate cuts affect inflation?
-Q: How does AI regulation impact the tech industry?
-Q: How do oil prices influence inflation?
-
-# Not grounded in full chain (ignores second hop)
-Q: How does the US Federal Reserve set interest rates?
-Q: How does climate change policy affect the energy sector?
-
-# Hallucination (introduces concepts NOT in Facts)
-Q: How do interest rate cuts affect consumer sentiment and stock market confidence?
-Q: How does the Ukraine war impact global political stability?
-Q: How does AI regulation affect startups and venture capital funding?
-
-# Reusing same pathway (rewording)
-Q: How do interest rate cuts influence gold prices via inflation?
-Q: In what way do interest rate cuts affect gold prices through inflation?
-Q: What links interest rate cuts to gold prices through inflation?
-
-# Wrong format / structure
-Q: Interest Rate Cuts --Impact--> Inflation?
-Q: Name the entities affected by oil prices.
-Q: Which of the following relates to consumer spending?
-
-# Not analytical / too shallow
-Q: Are oil prices increasing?
-Q: Is inflation bad for the economy?
-
-
-Facts Example:
-- Brexit --Impact--> Economy --Operate_In--> United Kingdom
-
-GOOD Questions:
-Q: How does Brexit affect economic activity within the United Kingdom through its impact on the economy?
-Q: In what way does the economy act as a transmission channel linking Brexit to outcomes in the United Kingdom?
-
-BAD Questions (Do NOT generate these):
-Q: What is Brexit?
-Q: When did Brexit happen?
-Q: Brexit --Impact--> Economy?
-Q: How does Brexit affect global politics?
-Q: How does Brexit influence consumer confidence?
-
---------------------------------
-
-Now generate new questions.
-
-Topic: {event_keyword}
-
-Facts:
-{facts}
-
-Output:
-Q:
-"""'''
+""".strip()

@@ -1,0 +1,169 @@
+method,topic,question
+zero_shot_findkg,European Central Bank,1. How does the Canadian economy impacting the European Central Bank affect key rates?
+zero_shot_findkg,European Central Bank,2. What effect does a negative impact of the European Central Bank on global inflation have on consumer spending?
+zero_shot_findkg,European Central Bank,3. In what way do lower interest rates announced by the European Central Bank influence U.S. economic growth?
+zero_shot_findkg,European Central Bank,"4. How might changes in the eurozone economy due to the European Central Bank affect exports, and how could this potentially lead to positive impacts on economic growth?"
+zero_shot_findkg,European Central Bank,"5. What impact does a decrease in key interest rates set by the European Central Bank have on bond yield, and what is its subsequent effect on stock market volatility?"
+zero_shot_findkg,European Central Bank,6. How do investments made by the European Central Bank into bonds affect investors?
+zero_shot_findkg,European Central Bank,7. In what way can an announcement of USMCA by Donald Trump be linked to actions taken or decisions made by the European Central Bank?
+zero_shot_findkg,European Central Bank,"8. What impact does a decrease in interest rates set by the European Central Bank have on economic growth, and how might this influence U.S. stocks positively?"
+zero_shot_findkg,European Central Bank,9. How could changes in inflation due to the European Central Bank's announcements potentially affect exports within the Eurozone economy?
+zero_shot_findkg,European Central Bank,10. In what way can lower key interest rates announced?
+few_shot_findkg,European Central Bank,1. How does the announcement of a key rate by the European Central Bank impact the Canadian economy?
+few_shot_findkg,European Central Bank,2. What is the negative impact on global inflation that results from actions taken by the European Central Bank?
+few_shot_findkg,European Central Bank,3. In what way do decreases in interest rates by the European Central Bank contribute to economic growth within the United States?
+few_shot_findkg,European Central Bank,4. How does a decrease in key interest rate by the European Central Bank affect overall economy?
+few_shot_findkg,European Central Bank,5. What is the positive impact on U.S. stocks that results from actions taken by the European Central Bank?
+few_shot_findkg,European Central Bank,6. How do investments made by the European Central Bank influence investors?
+few_shot_findkg,European Central Bank,"7. By decreasing inflation, how does the European Central Bank encourage consumer spending within its region and beyond?"
+few_shot_findkg,European Central Bank,8. In what way can the announcement of a key rate by the European Central Bank affect exports in the Eurozone economy?
+few_shot_findkg,European Central Bank,9. What is the negative impact on stock market volatility that results from changes to bond yields influenced by the European Central Bank?
+few_shot_findkg,European Central Bank,10. How does the European Central Bank's decision to invest in bonds potentially influence economic growth within the Eurozone and beyond?
+cot_findkg,European Central Bank,1. How does the Canadian economy affect the European Central Bank through its impact on key interest rates?
+cot_findkg,European Central Bank,2. In what way does the European Central Bank influence global economics negatively through increased inflation?
+cot_findkg,European Central Bank,3. Through what mechanism does the European Central Bank stimulate economic growth in exporting countries positively?
+cot_findkg,European Central Bank,4. How does the European Central Bank's actions decrease the value of the euro within the Eurozone economy?
+cot_findkg,European Central Bank,5. In what way does a lower key interest rate set by the European Central Bank contribute to positive US economic growth?
+cot_findkg,European Central Bank,6. Through what mechanism did the announcement made by the European Central Bank regarding USMCA affect Donald Trump?
+cot_findkg,European Central Bank,7. How might increased inflation caused by the European Central Bank stimulate consumer spending positively in various economies?
+cot_findkg,European Central Bank,8. In what way does a decrease in interest rates set by the European Central Bank impact economic growth directly?
+cot_findkg,European Central Bank,"9. Through what mechanism do lower key interest rates established by the European Central Bank affect bond yields negatively, leading to increased stock market volatility?"
+cot_findkg,European Central Bank,10. How is investment made by the European Central Bank into bonds connected to investors through this financial relationship?
+dsp_findkg,European Central Bank,1. How has the European Central Bank's announcement of key interest rate impacted Canada's economy?
+dsp_findkg,European Central Bank,2. What is the negative impact on inflation in the global economy due to the actions taken by the European Central Bank?
+dsp_findkg,European Central Bank,"3. In what way does a positive impact on economic growth result from an increase in exports, given that they are negatively affected by the European Central Bank?"
+dsp_findkg,European Central Bank,"4. How has the decrease in the Eurozone Economy's performance led to a decline in the value of the Euro, as influenced by the European Central Bank?"
+dsp_findkg,European Central Bank,"5. Over the observed period, how did changes in the European Central Bank's policies affect U.S. stocks?"
+dsp_findkg,European Central Bank,"6. What was Donald Trump's announcement related to, given that it was impacted by actions taken by the European Central Bank (USMCA)?"
+dsp_findkg,European Central Bank,7. How has inflation positively influenced consumer spending as a result of the European Central Bank's decisions during the recorded period?
+dsp_findkg,European Central Bank,"8. In what way did changes in interest rates affect US economic growth over time, considering they were decreased by the European Central Bank?"
+dsp_findkg,European Central Bank,9. What impact on the economy resulted from the European Central Bank investing in bonds across the observed period?
+zero_shot_wikidata,European Central Bank,"1. What country serves as the home for the German Federal Bank, which functions as the central bank of Germany?"
+zero_shot_wikidata,European Central Bank,2. Which European institution shares its name with a continent and has an economy that impacts the overall economy of Europe?
+zero_shot_wikidata,European Central Bank,3. In what country is the headquarters of the entity responsible for managing the monetary policy within the Eurozone located?
+zero_shot_wikidata,European Central Bank,"4. What economic system does the European Central Bank, which influences the economy of Europe, operate under as it carries out its responsibilities?"
+zero_shot_wikidata,European Central Bank,5. Which central bank operates independently and exercises control over Germany's money supply and credit conditions?
+zero_shot_wikidata,European Central Bank,6. By what name is the institution known that plays a significant role in maintaining price stability within the Eurozone?
+zero_shot_wikidata,European Central Bank,"7. What country serves as the location for the European Central Bank, which has been established to promote the smooth operation of economic policies among EU member states?"
+zero_shot_wikidata,European Central Bank,8. Which central bank operates under German law and manages monetary policy for Germany while also contributing to the overall objectives of the European System of Central Banks (ESCB)?
+zero_shot_wikidata,European Central Bank,9. What country's economy is influenced by a central banking institution that plays an essential role in maintaining price stability within the Eurozone?
+zero_shot_wikidata,European Central Bank,"10. Which entity, responsible for managing the?"
+few_shot_wikidata,European Central Bank,"1. How does the European Central Bank, being named after the economy of Europe, impact the overall economic health within that region?"
+few_shot_wikidata,European Central Bank,"2. As a central bank for Germany, what role does the European Central Bank play in managing monetary policy and maintaining financial stability within its jurisdiction?"
+few_shot_wikidata,European Central Bank,"3. If the European Central Bank decides to implement certain policies or measures, how might these actions affect other national banks such as the German Federal Bank?"
+few_shot_wikidata,European Central Bank,4. How do changes made by the European Central Bank impact interest rates across various sectors of the economy in Europe?
+few_shot_wikidata,European Central Bank,"5. What is the relationship between the European Central Bank and monetary integration within the broader economic union it serves (e.g., Eurozone)?"
+few_shot_wikidata,European Central Bank,"6. In what ways does the European Central Bank's decision-making process influence exchange rate stability for participating countries, such as Germany?"
+few_shot_wikidata,European Central Bank,7. How do changes in interest rates by the European Central Bank affect investment opportunities and capital flows between different economies within Europe?
+few_shot_wikidata,European Central Bank,"8. As a key player in monetary policy decisions, how might actions taken by the European Central Bank impact inflation levels across various sectors of the economy (e.g., consumer goods)?"
+few_shot_wikidata,European Central Bank,9. How does the European Central Bank's role as a lender?
+cot_wikidata,European Central Bank,"How is the European Central Bank connected to the German Federal Bank through its country affiliation with Germany, and how does it relate to the economy of Europe being named after Europe?"
+one_per_path_wikidata,European Central Bank,How is the European Central Bank connected to the German Federal Bank through Germany as their central bank?
+one_per_path_wikidata,European Central Bank,Why does the European Central Bank influence the economy of Europe through its name?
+zero_shot_findkg,Inflation,1. How does inflation impact consumer spending in Germany?
+zero_shot_findkg,Inflation,"2. In what way can inflation positively affect consumer spending, leading to an influence on the U.S. economy?"
+zero_shot_findkg,Inflation,3. What effect do Treasury inflation-protected securities have on inflation expectations and subsequent inflation pressures?
+zero_shot_findkg,Inflation,4. How might inflation negatively impact retailers within the U.S. economy?
+zero_shot_findkg,Inflation,"5. Can you explain how inflation impacts consumer spending in Germany, which then affects the overall state of the U.S. economy?"
+zero_shot_findkg,Inflation,6. What is the role of Treasury inflation-protected securities in decreasing inflation pressures related to expectations about future inflation rates?
+zero_shot_findkg,Inflation,7. How does a rise in inflation impact the U.S. economy as it relates to consumer spending?
+zero_shot_findkg,Inflation,8. In what manner can an increase in inflation lead to negative consequences for retailers within the U.S. economy?
+zero_shot_findkg,Inflation,"9. What is one way that Treasury inflation-protected securities could potentially help manage or mitigate the effects of inflation on various sectors, including the overall economy?"
+zero_shot_findkg,Inflation,10. How does a decrease in inflation pressures due to the introduction of Treasury inflation-protected securities affect consumer spending within an economy like Germany's?
+few_shot_findkg,Inflation,1. How does Germany's impact on inflation affect consumer spending in the US economy?
+few_shot_findkg,Inflation,2. How do Treasury inflation-protected securities influence retailers through their effect on inflation pressures?
+few_shot_findkg,Inflation,"3. What is the connection between inflation and its negative impact on the U.S. economy, specifically for retailers?"
+few_shot_findkg,Inflation,4. In what way does an increase in inflation expectations due to Treasury inflation-protected securities reduce inflation pressures?
+few_shot_findkg,Inflation,5. How does a positive influence of Germany's inflation on consumer spending contribute to the overall US economy?
+few_shot_findkg,Inflation,"6. What is the impact of inflation on consumer spending, and how can this affect retailers within the U.S. economy?"
+few_shot_findkg,Inflation,7. Through what mechanism do Treasury inflation-protected securities decrease inflation pressures in relation to their introduction?
+few_shot_findkg,Inflation,8. How does a positive influence of inflation on consumer spending lead to an overall improvement in the US economy?
+few_shot_findkg,Inflation,"9. What is the relationship between inflation and its negative impact on retailers within the U.S. economy, given that it's influenced by both domestic factors (inflation) and foreign ones (Germany)?"
+few_shot_findkg,Inflation,10. How does a decrease in inflation pressures due to Treasury inflation-?
+cot_findkg,Inflation,"How does Germany influence the U.S. economy through its positive impact on inflation, which in turn positively impacts consumer spending and retailers?"
+cot_findkg,Inflation,How do Treasury inflation-protected securities decrease inflation pressures by introducing lower inflation expectations?
+dsp_findkg,Inflation,1. How has inflation in Germany impacted consumer spending over time?
+dsp_findkg,Inflation,2. In what way does inflation positively affect consumer spending and subsequently have an impact on the U.S. economy?
+dsp_findkg,Inflation,"3. What is the relationship between Treasury inflation-protected securities, inflation expectations, and inflation pressures during the observed period?"
+dsp_findkg,Inflation,4. How has inflation affected retailers in the U.S. economy over time?
+dsp_findkg,Inflation,"5. In what way does inflation positively impact the U.S. economy through consumer spending, and how have these effects been manifested negatively on retailers within that same context?"
+dsp_findkg,Inflation,6. What is the role of Treasury inflation-protected securities in decreasing inflation pressures during the recorded period?
+dsp_findkg,Inflation,7. How has inflation affected consumer spending as a result of its impact on Germany over the observed time frame shown in the path?
+dsp_findkg,Inflation,"8. In what way does the introduction of Treasury inflation-protected securities influence inflation expectations and, subsequently, inflation pressures across the time frame shown in the path?"
+dsp_findkg,Inflation,"9. What is the economic significance of the relationship between inflation and the U.S. economy during the period from 97 to 99, as indicated by consumer spending being positively?"
+zero_shot_wikidata,Inflation,1. What field of economics studies inflation?
+zero_shot_wikidata,Inflation,2. Which part or component does inflation have in financial markets?
+zero_shot_wikidata,Inflation,3. In what area of economics is macroeconomics contrasted with microeconomics?
+zero_shot_wikidata,Inflation,4. To which country did monetary reform occur as a result of inflation?
+zero_shot_wikidata,Inflation,5. How was the Iranian economic crisis related to the 2025–2026 Iranian protests?
+zero_shot_wikidata,Inflation,6. What field of economics studies and analyzes inflation in detail?
+zero_shot_wikidata,Inflation,7. Which event took place in Russia due to the effects of inflation?
+zero_shot_wikidata,Inflation,"8. In what context does macroeconomics focus on issues larger than individual markets or industries, while microeconomics focuses on specific market behavior?"
+zero_shot_wikidata,Inflation,9. How was Iran's economic crisis manifested during the 2025–2026 period through protests?
+zero_shot_wikidata,Inflation,10. What is one area where inflation has an impact according to the provided context?
+few_shot_wikidata,Inflation,1. How does the study of inflation within financial economics impact the behavior of financial markets?
+few_shot_wikidata,Inflation,2. In what way is macroeconomics different from microeconomics when it comes to studying inflation?
+few_shot_wikidata,Inflation,"3. What effect did Monetary reform in Russia, 1998 have on inflation rates?"
+few_shot_wikidata,Inflation,4. How has inflation contributed to the Iranian economic crisis that led to the 2025–2026 protests in Iran?
+cot_wikidata,Inflation,"In what way does macroeconomics relate to inflation, and how does it differ from microeconomics in this context?"
+cot_wikidata,Inflation,Through what mechanism might monetary reform in Russia (1998) be linked to inflation?
+cot_wikidata,Inflation,How is the Iranian economic crisis connected to inflation as a cause of the 2025–2026 Iranian protests?
+one_per_path_wikidata,Inflation,How is inflation connected to financial markets through its study by financial economics?
+one_per_path_wikidata,Inflation,How is inflation connected to microeconomics through its opposite relationship with macroeconomics?
+one_per_path_wikidata,Inflation,"Through what mechanism does inflation connect to Russia through its effect on Monetary reform in Russia, 1998?"
+one_per_path_wikidata,Inflation,What effect does inflation have on the 2025–2026 Iranian protests through its role as a cause of the Iranian economic crisis?
+zero_shot_findkg,JPMorgan Chase,1. Did General Motors' decrease in shares have a negative impact on JPMorgan Chase?
+zero_shot_findkg,JPMorgan Chase,"2. Does Warren Buffett invest in both Fannie Mae and Freddie Mac, as well as JPMorgan Chase & Co?"
+zero_shot_findkg,JPMorgan Chase,3. How does JPMorgan Chase's introduction of cloud computing affect Alibaba Group Holding Ltd?
+zero_shot_findkg,JPMorgan Chase,4. Did the decrease in shares by JPMorgan Chase impact consumer sentiment negatively?
+zero_shot_findkg,JPMorgan Chase,5. Does JPMorgan Chase participate in the NYSE and invest in Coinbase through its involvement with the exchange?
+zero_shot_findkg,JPMorgan Chase,6. Was a jobs report announced jointly by JPMorgan Chase & Co and the Department of Labor?
+zero_shot_findkg,JPMorgan Chase,7. Did the decrease in bank stocks by JPMorgan Chase & Co negatively impact the U.S. economy?
+zero_shot_findkg,JPMorgan Chase,8. How did an announcement of recession made by JPMorgan Chase & Co affect commodities?
+zero_shot_findkg,JPMorgan Chase,"9. Does Amazon receive investments from JPMorgan Chase & Co, and if so, what is its potential effect on Ford Motor Company?"
+zero_shot_findkg,JPMorgan Chase,"10. Has JPMorgan Chase been fined by the Securities and Exchange Commission, and has this led to a change in their announced earnings or stock values?"
+few_shot_findkg,JPMorgan Chase,1. How does a decrease in the shares of General Motors impact JPMorgan Chase?
+few_shot_findkg,JPMorgan Chase,2. What is the role of Warren Buffett's investments in both JPMorgan Chase and Fannie Mae/Freddie Mac?
+few_shot_findkg,JPMorgan Chase,3. In what way do declines in JPMorgan Chase shares affect consumer sentiment regarding corporate earnings?
+few_shot_findkg,JPMorgan Chase,4. How does JPMorgan Chase's investment in Alibaba Group Holding Ltd impact cloud computing?
+few_shot_findkg,JPMorgan Chase,"5. What is the relationship between JPMorgan Chase and Bank of America Corp., as evidenced by their investments in Fannie Mae/Freddie Mac, and how does this affect bank stocks?"
+few_shot_findkg,JPMorgan Chase,6. How does a decrease in shares of JPMorgan Chase negatively impact currency markets through Deutsche Bank AG?
+few_shot_findkg,JPMorgan Chase,"7. In what way do investors who invest in Chewy Inc., via JPMorgan Chase & Co, influence the pet industry or related sectors?"
+few_shot_findkg,JPMorgan Chase,8. What is the significance of JPMorgan Chase's participation in NYSE and its investment in Coinbase for cryptocurrency markets?
+few_shot_findkg,JPMorgan Chase,9. How does an announcement by JPMorgan Chase regarding a jobs report impact the Department of Labor?
+cot_findkg,JPMorgan Chase,1. How does a negative impact on stocks by JPMorgan Chase affect corporate earnings?
+cot_findkg,JPMorgan Chase,2. In what way do decreased shares of General Motors influence JPMorgans Chase's performance?
+cot_findkg,JPMorgan Chase,3. Through what mechanism does Warren Buffett's investment in JPMorgan Chase & Co contribute to his investments in Fannie and Freddie?
+cot_findkg,JPMorgan Chase,4. How might a decrease in JPMorgan Chase & Co's shares impact consumer sentiment?
+cot_findkg,JPMorgan Chase,5. In what way does the introduction of cloud computing by JPMorgan Chase & Co affect Alibaba Group Holding Ltd?
+cot_findkg,JPMorgan Chase,6. Through what mechanism does a negative impact on Bank of America Corp. by JPMorgan Chase & Co due to investments in Fannie and Freddie influence currency markets?
+cot_findkg,JPMorgan Chase,7. How is Deutsche Bank AG's performance connected to JPMorgan Chase through its negative impact on the bank stocks?
+cot_findkg,JPMorgan Chase,"8. In what way does an investor investing in Chewy Inc., which is participated by JPMorgan Chase & Co, affect the overall market dynamics?"
+cot_findkg,JPMorgan Chase,9. Through what mechanism do JPMorgan Chase & Co's participation in NYSE and investment in Coinbase influence cryptocurrency markets?
+dsp_findkg,JPMorgan Chase,1. How did JPMorgan Chase's impact on stocks in 2093 affect corporate earnings?
+dsp_findkg,JPMorgan Chase,2. What was the effect of General Motors' impact on JPMorgan Chase in 2089 on their share prices over time?
+dsp_findkg,JPMorgan Chase,3. In what way did Warren Buffett's investments in JPMorgan Chase & Co influence his subsequent investments in Fannie and Freddie between 2084 and 2094?
+dsp_findkg,JPMorgan Chase,4. How did the decrease in shares due to JPMorgan Chase's impact on consumer sentiment from 2083 to 2093 affect other sectors of the economy?
+dsp_findkg,JPMorgan Chase,"5. What was the role of cloud computing, which JPMorgan Chase & Co introduced, in its impact on Alibaba Group Holding Ltd between 2082 and 2097?"
+dsp_findkg,JPMorgan Chase,6. How did JPMorgan Chase's negative impact on Bank of America Corp.'s investments in Fannie and Freddie from 2080 to 2094 affect the overall financial landscape during that period?
+dsp_findkg,JPMorgan Chase,"7. What was the influence of Deutsche Bank AG, which experienced a negative impact due to JPMorgan?"
+zero_shot_wikidata,JPMorgan Chase,1. What country was JPMorgan Chase based in during the Cuban Missile Crisis?
+zero_shot_wikidata,JPMorgan Chase,"2. Where did the significant event, the Cuban Missile Crisis, occur with respect to JPMorgan Chase's location?"
+zero_shot_wikidata,JPMorgan Chase,3. Which major historical event took place within the United States where JPMorgan Chase is located?
+zero_shot_wikidata,JPMorgan Chase,4. In which country was the Cuban Missile Crisis not a significant event for JPMorgan Chase?
+zero_shot_wikidata,JPMorgan Chase,5. Where did the crisis that involved missiles in Cuba occur with respect to the location of JPMorgan Chase?
+zero_shot_wikidata,JPMorgan Chase,"6. What geographical area experienced the Cuban Missile Crisis, but not necessarily JPMorgan Chase?"
+zero_shot_wikidata,JPMorgan Chase,7. In which country was there no significant event related to the Cuban Missile Crisis for JPMorgan Chase?
+zero_shot_wikidata,JPMorgan Chase,8. Where did a crisis involving missiles in Cuba occur that may or may not have affected JPMorgan Chase's operations?
+zero_shot_wikidata,JPMorgan Chase,"9. Which geographical area, other than where JPMorgan Chase is located, experienced the Cuban Missile Crisis?"
+zero_shot_wikidata,JPMorgan Chase,10. In which country was there no significant event related to JPMorgan Chase during the Cuban Missile Crisis?
+few_shot_wikidata,JPMorgan Chase,1. How did the Cuban Missile Crisis impact JPMorgan Chase's operations within the United States?
+few_shot_wikidata,JPMorgan Chase,2. What was the role of the Cuban Missile Crisis in shaping JPMorgan Chase's presence in the U.S. market?
+few_shot_wikidata,JPMorgan Chase,"3. In what way does the historical event, the Cuban Missile Crisis, affect or influence JPMorgan Chase's operations within its home country (United States)?"
+few_shot_wikidata,JPMorgan Chase,4. How did the geopolitical situation during the Cuban Missile Crisis potentially impact JPMorgan Chase's financial stability in the United States?
+few_shot_wikidata,JPMorgan Chase,5. Could the Cuban Missile Crisis have any indirect effects on JPMorgan Chase's strategic decisions within its home country (United States)?
+few_shot_wikidata,JPMorgan Chase,6. How might the geopolitical tensions during the Cuban Missile Crisis influence the risk profile of JPMorgan Chase in the United States?
+few_shot_wikidata,JPMorgan Chase,7. In what ways could the resolution or escalation of the Cuban Missile Crisis impact JPMorgan Chase's financial performance within its home country (United States)?
+few_shot_wikidata,JPMorgan Chase,8. How did the geopolitical climate during the Cuban Missile Crisis potentially affect?
+cot_wikidata,JPMorgan Chase,How is the country affiliation of JPMorgan Chase connected to the Cuban Missile Crisis?
+one_per_path_wikidata,JPMorgan Chase,How is JPMorgan Chase connected to the Cuban Missile Crisis through its country affiliation with the United States?

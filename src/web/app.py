@@ -1,5 +1,6 @@
 import json
 import requests
+import re
 from pathlib import Path
 from flask import Flask, render_template, request
 from src.kg.path_filter import prepare_paths_for_generation
@@ -9,9 +10,17 @@ from src.rag.prompt.graphPrompt import build_graph_zero_prompt
 from src.rag.prompt.promptChainRunner import PromptChainRunner
 from src.rag.prompt.frewShot import build_few_prompt
 from src.rag.prompt.dspPrompt import build_dsp_prompt
-from src.rag.prompt.chain_prompt import chain_prompt
+from src.rag.prompt.chain_prompt import build_cot_prompt
 
-from src.rag.bootstrap_pipeline import generate_final_questions_only
+from src.rag.prompt.judgePrompt import (
+    build_judge_prompt
+)
+
+#from src.rag.bootstrap_pipeline import generate_final_questions_only
+from src.rag.bootstrap_pipeline import (
+    bootstrap_zero_shot_examples,
+    load_top_bootstrap_examples
+)
 from src.rag.generate_questions import (
     generate_questions, 
     generate_one_per_path)  # your existing LLM call
@@ -38,8 +47,6 @@ from src.kg.wikidata_sparql import (
     get_wikidata_context_sparql,
     format_wikidata_context
 )
-
-
 
 app = Flask(__name__)
 
@@ -86,115 +93,6 @@ def home():
         topic="",
         n=5,
     )
-
-''' -= DEBUG WIKI VERSION --
-@app.post("/generate")
-def generate():
-    topic = request.form.get("topic", "").strip()
-    n = int(request.form.get("n", "5"))
-
-    raw_local_rows = get_context(topic, limit=200, split="train")
-    local_rows = simplify_context(raw_local_rows)
-    local_rows = dedupe_paths(local_rows)
-    local_rows = remove_bad_paths(local_rows)
-    local_rows = dedupe_middle_related(local_rows)
-    local_rows = limit_middle_reuse(local_rows, max_per_middle=1)
-    local_rows = select_diverse_paths(local_rows, final_k=max(n + 8, 15))
-
-    print(f"\n[DEBUG] topic = {topic}")
-    print(f"[DEBUG] local_rows count = {len(local_rows)}")
-
-    try:
-        wiki_rows = get_wikidata_context(topic)
-    except Exception as e:
-        print(f"[DEBUG] get_wikidata_context failed: {e}")
-        wiki_rows = []
-
-    print(f"[DEBUG] wiki_rows count = {len(wiki_rows)}")
-    if wiki_rows:
-        print(f"[DEBUG] first wiki row = {wiki_rows[0]}")
-    else:
-        print("[DEBUG] wiki_rows is empty")
-
-    if len(local_rows) < 3 and len(wiki_rows) < 3:
-        return render_template(
-            "index.html",
-            questions_local=["Not enough Local KG data"],
-            questions_wiki=["Not enough Wikidata data"],
-            topic=topic,
-            n=n,
-        )
-
-    qs_local = []
-    qs_wiki = []
-
-    if len(local_rows) >= 3:
-        prompt_local = build_prompt(topic, local_rows, n_questions=n)
-        qs_local = generate_until_enough(
-            prompt_local,
-            n,
-            clean_fn=clean_questions,
-            max_attempts=3,
-        )
-
-        if len(qs_local) == 0:
-            qs_local = ["Could not generate enough clean Local KG questions"]
-    else:
-        qs_local = ["Not enough Local KG context"]
-
-    if len(wiki_rows) >= 3:
-        try:
-            clear_wiki_subgraph()
-            insert_wiki_rows(wiki_rows)
-
-            structured_rows = query_wiki_paths(limit=25)
-            print(f"[DEBUG] structured_rows before filter = {len(structured_rows)}")
-
-            if structured_rows:
-                print(f"[DEBUG] first raw structured row = {structured_rows[0]}")
-
-            structured_rows = prepare_paths_for_generation(
-                structured_rows,
-                target_k=max(n + 3, 8),
-            )
-            print(f"[DEBUG] structured_rows after filter = {len(structured_rows)}")
-
-            if structured_rows:
-                print(f"[DEBUG] first filtered structured row = {structured_rows[0]}")
-
-            if len(structured_rows) >= 3:
-                prompt_wiki = build_zero_prompt(topic, structured_rows, n=n)
-                qs_wiki = generate_until_enough(
-                    prompt_wiki,
-                    n,
-                    clean_fn=clean_questions,
-                    max_attempts=2,
-                )
-
-                if len(qs_wiki) == 0:
-                    qs_wiki = ["Could not generate enough Wikidata questions"]
-            else:
-                qs_wiki = ["Not enough structured Wikidata paths"]
-
-        except Exception as e:
-            print(f"[DEBUG] Wikidata structuring failed: {e}")
-            qs_wiki = [f"Wikidata pipeline error: {e}"]
-    else:
-        qs_wiki = ["Not enough Wikidata context"]
-
-    return render_template(
-        "index.html",
-        questions_local=qs_local,
-        questions_wiki=qs_wiki,
-        topic=topic,
-        n=n,
-    )
-'''
-
-
-
-
-
 
 
 @app.post("/generate")
@@ -285,8 +183,51 @@ def generate():
         
         #prompt_local = build_zero_prompt(topic, local_rows, n=n)
         cand = max(n*2,10)
-        prompt_local = build_prompt(topic, local_rows, n=cand)
-        #prompt_local = chain_prompt(topic, local_rows, n=cand)
+        ###################################### Bootstrapping Steps ######################################
+        csv_path = "outputs/bootstrap_examples.csv"
+
+    # STEP 1: bootstrap zero-shot examples and save to CSV
+        bootstrap_zero_shot_examples(
+            topic=topic,
+            paths=local_rows,
+            #grounding_fn=lambda q, paths: 0.8,   # placeholder for now
+            csv_path=csv_path,
+            candidates_per_run=cand,
+            max_examples=5,
+        )
+
+        # STEP 2: load best saved examples
+        few_shot_examples = load_top_bootstrap_examples(
+            csv_path=csv_path,
+            topic=topic,
+            k=3
+        )
+
+        print("\n--- BOOTSTRAP FEW-SHOT EXAMPLES ---")
+        for ex in few_shot_examples:
+            print(ex["question"], "| score:", ex["final_score"])
+            
+        # STEP 3: use those examples in few-shot prompt
+        prompt_local = build_few_prompt(
+            event_keyword=topic,
+            context_rows=local_rows,
+            examples=few_shot_examples,
+            n=n
+        )
+
+        qs_local = generate_until_enough(
+            prompt_local,
+            n,
+            clean_fn=clean_questions,
+            max_attempts=3
+        )
+
+        ############# END OF BOOTSTRAPPING STEPS #############
+
+        ''' --- This was before bootstrapping ---
+        #prompt_local = build_prompt(topic, local_rows, n=cand)
+        #prompt_local = build_zero_prompt(topic, local_rows, n=cand)
+        prompt_local = build_cot_prompt(topic, local_rows, n=cand)
         #prompt_local = build_dsp_prompt(topic, local_rows, n=n)
         #prompt_local = build_advanced_cot_prompt(topic, local_rows, n=n)
         #prompt_local = build_few_prompt(topic, local_rows, n=n)
@@ -297,7 +238,7 @@ def generate():
             n,
             clean_fn=clean_questions,
             max_attempts=3,
-        )
+        ) --- End of before bootstrapping ---'''
 
         '''
         context_text = context_rows_to_text(local_rows)
@@ -318,8 +259,8 @@ def generate():
             clear_wiki_subgraph()
             insert_wiki_rows(wiki_rows)
 
-            structured_rows = query_wiki_paths(limit=600)
-            structured_rows = limit_middle_reuse(structured_rows, max_per_middle=1)
+            structured_rows = query_wiki_paths(limit=800)
+            #structured_rows = limit_middle_reuse(structured_rows, max_per_middle=1)
 
             # only prepare if there is something to prepare
             '''if structured_rows:
@@ -338,6 +279,10 @@ def generate():
             
             if len(structured_rows) > 0:
                 qs_wiki = generate_one_per_path(topic, structured_rows, n)
+
+                scored = evaluate_questions(qs_wiki, structured_rows)
+
+                qs_wiki = [q for q, s in scored if s >= 5]
 
                 if len(qs_wiki) == 0:
                     wiki_status = "Wikidata generated no usable questions"
@@ -426,90 +371,27 @@ def generate():
     )'''
 
 
-'''
-@app.post("/generate")
-def generate():
-    topic = request.form.get("topic", "").strip()
-    n = int(request.form.get("n", "5"))
+def parse_score(text):
+    match = re.search(r"(\d+)/7", text)
+    if match:
+        return int(match.group(1))
+    return 0
 
-    //raw_local_rows = get_context(topic, limit=100, split="train")
-    local_rows = simplify_context(raw_local_rows)
-    local_rows = dedupe_paths(local_rows)
-    local_rows = remove_bad_paths(local_rows)
-    local_rows = dedupe_middle_related(local_rows)
-    local_rows = limit_middle_reuse(local_rows, max_per_middle=1)
-    local_rows = select_diverse_paths(local_rows, final_k=max(n + 3, 8))//
+def evaluate_questions(questions, paths):
+    scored = []
 
-    structured_rows = query_wiki_paths(limit=50)
-    structured_rows = prepare_paths_for_generation(structured_rows, target_k=max(n + 3, 8))
+    for q, path in zip(questions, paths):
+        prompt = build_judge_prompt(q, path)
+        result = generate_questions(prompt)  # reuse your LLM call
 
-    wiki_rows = get_wikidata_context(topic)
+        score = parse_score(" ".join(result) if isinstance(result, list) else result)
 
-    if len(local_rows) < 3 and len(wiki_rows) < 3:
-        return render_template(
-            "index.html",
-            questions_local=["Not enough Local KG data"],
-            questions_wiki=["Not enough Wikidata data"],
-            topic=topic,
-            n=n,
-        )
+        scored.append((q, score))
 
-    print("\n--- TOPIC ---", topic)
+    return scored
 
-    print("\n--- LOCAL CONTEXT ---")
-    for row in local_rows[:5]:
-        print(row)
 
-    print("\n--- WIKIDATA CONTEXT ---")
-    for row in wiki_rows[:5]:
-        print(row)
 
-    qs_local = []
-    qs_wiki = []
 
-    if len(local_rows) >= 3:
-        prompt_local = build_prompt(topic, local_rows, n_questions=n)
-        qs_local = generate_until_enough(
-            prompt_local,
-            n,
-            clean_fn=clean_questions,
-            max_attempts=3,
-        )
-
-        if len(qs_local) == 0:
-            qs_local = ["Could not generate enough clean Local KG questions"]
-    else:
-        qs_local = ["Not enough Local KG context"]
-
-    if len(wiki_rows) >= 3:
-        clear_wiki_subgraph()
-        insert_wiki_rows(wiki_rows)
-        structured_rows = query_wiki_paths(limit=25)
-
-        if len(structured_rows) >= 3:
-            prompt_wiki = build_prompt(topic, structured_rows, n_questions=n)
-            qs_wiki = generate_until_enough(
-                prompt_wiki,
-                n,
-                clean_fn=clean_questions,
-                max_attempts=2,
-            )
-
-            if len(qs_wiki) == 0:
-                qs_wiki = ["Could not generate enough Wikidata questions"]
-        else:
-            qs_wiki = ["Not enough structured Wikidata paths"]
-    else:
-        qs_wiki = ["Not enough Wikidata context"]
-
-    return render_template(
-        "index.html",
-        questions_local=qs_local,
-        questions_wiki=qs_wiki,
-        topic=topic,
-        n=n,
-    )
-
-'''
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
